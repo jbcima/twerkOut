@@ -27,6 +27,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/twerk', routes.twerk);
 
 
 
