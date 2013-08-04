@@ -42,7 +42,7 @@ io.sockets.on('connection', function(socket){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
           _to.players[socket.id] = { score: 0 };
-          io.sockets.socket(socket.id).emit("player-data", _to.players[socket.id]);
+          io.sockets.socket(socket.id).emit("player-data", _to.players);
       }
     });
   });
@@ -74,6 +74,20 @@ io.sockets.on('connection', function(socket){
       } else if (sessionID) {
 	_to.players[socket.id].score += score.get_score(data,80.);
 	socket.broadcast.emit('player-update',{'id': socket.id, 'score':_to.players[socket.id].score});
+      } else {
+        console.log("No sessionID");
+      }
+    });
+  });
+
+  // On song end
+  socket.on('song-end', function(data){
+    socket.get('sessionID', function(err, sessionID){
+      if (err) {
+        console.log(err);
+      } else if (sessionID) {
+          io.sockets.socket(socket.id).emit("player-data", _to.players);
+        socket.broadcast.to(sessionID).emit('end', _to.players);
       } else {
         console.log("No sessionID");
       }

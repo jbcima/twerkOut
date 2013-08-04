@@ -21,6 +21,10 @@ sessionID = sessionID.toString();
 joinSession();
 
 
+socket.on('end',function(data){
+  console.log(data);
+});
+
 socket.on('player-data' ,function(data){
 	console.dir(data);
 });
