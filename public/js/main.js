@@ -11,9 +11,15 @@ socket.emit('join', sessionID);
 
 console.log(sessionID);
 
-socket.on('joined', function(ID) {
-  console.log('joined: ' + ID);
+socket.on('joined', function(data) {
+	console.log('joined: ' + data.session + ', ' + data.socketID);
+	// store player data in browser
+	socket.emit('playerid', '1');
+
 });
+
+
+
 
 
 socket.on('action', function(data){

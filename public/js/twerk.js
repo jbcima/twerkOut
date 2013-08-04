@@ -20,6 +20,12 @@ sessionID = sessionID.toString();
 
 joinSession();
 
+
+socket.on('player-data' ,function(data){
+	console.dir(data);
+});
+
+
 // on shake 
 window.addEventListener('shake', function(event) {
 	socket.emit('twerk', event.timeDifference);
