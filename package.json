@@ -13,6 +13,9 @@
     "grunt": "~0.4.1",
     "grunt-develop": "~0.1.1",
     "grunt-contrib-watch": "~0.4.4",
-    "request": "~2.22.0"
+    "grunt-contrib-compass": "~0.3.0",
+    "connect-livereload": "~0.2.0",
+    "request": "~2.22.0",
+    "matchdep": "~0.1.2"
   }
 }
