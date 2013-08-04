@@ -36,11 +36,14 @@ var _to = {};
 // (note: this is the servers connection to everything)
 io.sockets.on('connection', function(socket){
   //console.log('connection!');
-  socket.on('join', function(sessionID){
+  socket.on('join', function(sessionID, isBrowser){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
-          if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
+        if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
+        
+        if(!isBrowser) {
           _to[sessionID].players[socket.id] = { score: 0 };
+        }
           // emit player data
           io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
       }
@@ -87,7 +90,7 @@ io.sockets.on('connection', function(socket){
         console.log(err);
       } else if (sessionID) {
 	_to[sessionID].players[socket.id].score += score.get_score(data,80.);
-	socket.broadcast.emit('player-update',{'id': socket.id, 'score':_to[sessionID].players[socket.id].score});
+	socket.broadcast.emit('player-update',{'id': socket.id, 'score': _to[sessionID].players[socket.id].score });
       } else {
         console.log("No sessionID");
       }

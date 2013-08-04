@@ -23,21 +23,43 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   // Private helpers
   // ===============
+    $scope.sizeVideo = function() {
+      var height = $(window).innerHeight();
+      var width = $(window).innerWidth();
+      // if(width > height) {
+      //   $('#youtube-video').width(width);
+      //   $('#youtube-video').height(width / (16/9));
+      // } else {
+      //   $('#youtube-video').height(height);
+      //   $('#youtube-video').width(height / (16/9));
+      // }
+    };
 
-    // small functions to help 
+    $(document).ready(function(){
+      $(window).resize(function() {
+        $scope.sizeVideo();
+      });
 
+    });
 
   // Methods published to the scope
   // ==============================
+
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
     console.log($scope.sessionID);
 
-    socket.emit('join', $scope.sessionID);
-  };
+    socket.emit('join', $scope.sessionID, 1);
 
+  };
   $scope.init();
+
+  $scope.startGame = function(ytplayer) {
+    ytplayer.playVideo();
+    socket.emit('music-start', $scope.sessionID);
+  }
+
 
   $scope.playerData = function (data) {
     $scope.players = data;
@@ -46,9 +68,10 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.playerUpdate = function (data) {
     $scope.players[data.id].score = data.score;
-    console.log(data.id);
+    console.log(data.score);
     console.log($scope.players);
   };
+
 
 });
 

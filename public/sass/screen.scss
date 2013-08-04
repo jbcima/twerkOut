@@ -1,3 +1,52 @@
-h1 {
-color: blue;
+@import "compass";
+@import "compass/css3";
+@import "compass/reset";
+@import "clearfix";
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
+
+
+body {
+font-family: 'Open Sans', sans-serif;
+}
+
+* {
+	@include box-sizing(border-box);
+}
+
+#twerkoutPlayer {
+	width: 100% !important;
+	height: 100% !important;
+}
+
+#scoreboard {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	li {
+		text-align: center;
+		h1 {
+			@include adjust-font-size-to(36px);
+			font-weight: 600;
+			width: 100%;
+			padding-top: 10px;
+		}
+		h2 {
+			@include adjust-font-size-to(48px);
+			line-height: 1em;
+			font-weight: 300;
+			width: 100%;
+			padding-top: 20px;
+		}
+
+		float: left;
+		width: 200px;
+		height: 175px;
+		-webkit-transform: skewY(-2deg);
+		border-radius: 4px;
+		box-shadow: 2px 2px 50px;
+		margin: 30px;
+		background: rgba(255,255,255,0.7);
+	}
 }
