@@ -1,6 +1,6 @@
 // if the device is booty enabled. send them to twerk.
 if (screen.width <= 699) {
-  document.location = "twerk";
+  document.location = "twerk.html";
 }
 
 

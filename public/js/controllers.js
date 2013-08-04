@@ -11,6 +11,10 @@ app.controller('AppCtrl', function ($scope, socket) {
   socket.on('joined', function(data) {
     console.log('joined: ' + data.session + ', ' + data.socketID);
   });
+
+  socket.on('player-data', function(data) {
+    $scope.playerUpdate(data);
+  });
     
 
   // Private helpers
@@ -24,10 +28,18 @@ app.controller('AppCtrl', function ($scope, socket) {
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
+    console.log($scope.sessionID);
+
     socket.emit('join', $scope.sessionID);
+    console.log('HudCtrli');
   };
 
   $scope.init();
+
+  $scope.playerUpdate = function (data) {
+    $scope.players = data;
+    console.log(data);
+  };
 
 });
 

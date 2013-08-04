@@ -8,7 +8,7 @@ var sessionID= '';
 
 
 function joinSession() {
-sessionID= prompt("ENTER SESSION ID:");
+sessionID = prompt("ENTER SESSION ID:");
 sessionID = sessionID.toString();
 
   if (sessionID === "")

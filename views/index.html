@@ -12,14 +12,16 @@
 <script type="text/javascript" src="/js/services.js"></script>
 
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-controller="AppCtrl">
+	<div id="youtube-video"></div>
 
-<div ng-controller="AppCtrl">
-aaaa
-{{meow}}
-bobby
 
-</div>
+	<ul id="scoreboard">
+		<li ng-repeat="player in players">
+			<h1 class="name"> Player {{ $index + 1 }} </h1>
+			<h2 class="score">{{ player.score }}</h2>
+		</li>
+	</ul>
 
 </body>
 </html>

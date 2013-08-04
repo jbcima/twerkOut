@@ -27,8 +27,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', routes.index);
-app.get('/twerk', routes.twerk);
 
 var score = require('./private/score.js');
 
