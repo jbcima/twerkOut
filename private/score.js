@@ -14,5 +14,8 @@ exports.get_score = function(delta,T){
     var y = find_player_tempo(delta);
 
     //return score(T,y,time,multiplier);
-    return Math.round(100*score(T,y));
+    var pre_score = score(T,y);
+
+    //return Math.round(100.*pre_score);
+    return [Math.round(100.*pre_score),pre_score];
 }

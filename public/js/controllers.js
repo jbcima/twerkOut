@@ -46,8 +46,7 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.playerUpdate = function (data) {
     $scope.players[data.id].score = data.score;
-    console.log(data.id);
-    console.log($scope.players);
+      $scope.players[data.id].acc = data.acc;
   };
 
 });
