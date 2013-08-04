@@ -34,7 +34,7 @@ module.exports = function (grunt) {
         options: { livereload: reloadPort},
       },
       hogan: {
-        files: ['views/*.hjs'],
+        files: ['views/*.html'],
         options: { livereload: reloadPort},
       },
       compass: {
