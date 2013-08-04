@@ -19,11 +19,12 @@ socket.on('joined', function(data) {
 });
 
 
-
+socket.on('player-update', function(data) {
+    console.log(data);
+});
 
 
 socket.on('action', function(data){
-  console.log(data);
   if (data === 'the-action'){
     setTimeout(function(){
     }, 40);

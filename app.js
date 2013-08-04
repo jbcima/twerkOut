@@ -39,6 +39,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/twerk', routes.twerk);
 
+var score = require('./private/score.js');
 
 // INITIAL VARIABLES
 var _to = {
@@ -47,7 +48,7 @@ var _to = {
 
 // (note: this is the servers connection to everything)
 io.sockets.on('connection', function(socket){
-  console.log('connection!');
+  //console.log('connection!');
   socket.on('join', function(sessionID){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
@@ -63,7 +64,7 @@ io.sockets.on('connection', function(socket){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-        console.log('device-motion:' + data);
+        //console.log('device-motion:' + data);
             
           // put logic here used to determine what actions to emit to the browser
           //   ie. update scores
@@ -82,8 +83,8 @@ io.sockets.on('connection', function(socket){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-        console.log('twerk: ' + data);
-        socket.broadcast.to(sessionID).emit('action', data);
+	_to.players[socket.id].score += score.get_score(data,80.);
+	socket.broadcast.emit('player-update',{'id': socket.id, 'score':_to.players[socket.id].score});
       } else {
         console.log("No sessionID");
       }
