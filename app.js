@@ -42,29 +42,18 @@ app.get('/twerk', routes.twerk);
 
 // INITIAL VARIABLES
 var _to = {
-  players: []
+  players: {}
 }
 
+// (note: this is the servers connection to everything)
 io.sockets.on('connection', function(socket){
   console.log('connection!');
   socket.on('join', function(sessionID){
-    
     socket.set('sessionID', sessionID, function(){
-      if(socket.join(sessionID))
-
-        var currentPlayer = _to.players.length;
-        _to.players.push({ socket: socket.id, id: currentPlayer, score: 0});
-        
-
-        io.sockets.socket(socket.id).emit("player-data", _to.players[currentPlayer]);
-
-        // var playerID = players.length - 1;
-        // socket.broadcast.to(sessionID).emit('joined', { 
-        //   session: sessionID, 
-        //   players: to.players, 
-        //   joined: playerID
-        // });
-
+      if(socket.join(sessionID)) {
+          _to.players[socket.id] = { score: 0 };
+          io.sockets.socket(socket.id).emit("player-data", _to.players[socket.id]);
+      }
     });
   });
 
@@ -100,24 +89,6 @@ io.sockets.on('connection', function(socket){
       }
     });
   });
-
-
-  // Player Management
-  socket.on('twerk', function(data){
-    socket.get('sessionID', function(err, sessionID){
-      if (err) {
-        console.log(err);
-      } else if (sessionID) {
-        console.log('twerk: ' + data);
-        socket.broadcast.to(sessionID).emit('action', data);
-      } else {
-        console.log("No sessionID");
-      }
-    });
-  });
-
-
-
 
 });
 
