@@ -7,25 +7,16 @@ var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
-  , port = 8080
   , routes = require('./routes')
-  , http = require('http')
   , path = require('path');
 
-
-if (process.env.NODE_ENV == 'production')
-  port = 80;
-
-server.listen(port);
-console.log('app running at localhost:' + port);
-
-
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  //app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'hjs');
   app.use(express.favicon());
   app.use(express.logger('dev'));
+  app.use(require("connect-livereload")({port: 35729}));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -94,8 +85,6 @@ io.sockets.on('connection', function(socket){
 });
 
 
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
+server.listen(8080);
+console.log("Express server listening on port 8080");
 

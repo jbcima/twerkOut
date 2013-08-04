@@ -5,6 +5,7 @@ var request = require('request');
 module.exports = function (grunt) {
   var reloadPort = 35729, files;
 
+  require("matchdep").filterDev("grunt-*").forEach(grunt.loadNpmTasks);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     develop: {
@@ -32,10 +33,22 @@ module.exports = function (grunt) {
         files: ['public/stylesheets/*.css'],
         options: { livereload: reloadPort},
       },
-      jade: {
-        files: ['views/*.jade'],
+      hogan: {
+        files: ['views/*.hjs'],
         options: { livereload: reloadPort},
+      },
+      compass: {
+        files: ['public/sass/*.{scss,sass}'],
+        options: { livereload: reloadPort},
+        tasks: ['compass']
       }
+    },
+    compass: {
+      options: {
+        sassDir: "public/sass",
+        cssDir: "public/css"
+      },
+      dist: {}
     }
   });
 
