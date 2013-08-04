@@ -57,7 +57,10 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.startGame = function(ytplayer) {
     ytplayer.playVideo();
-    socket.emit('music-start', $scope.sessionID);
+    socket.emit('song-start', $scope.sessionID);
+  }
+  $scope.endGame = function(ytplayer) {
+    socket.emit('song-end', $scope.sessionID);
   }
 
 
@@ -70,6 +73,7 @@ app.controller('AppCtrl', function ($scope, socket) {
     $scope.players[data.id].score = data.score;
     console.log(data.score);
     console.log($scope.players);
+    $scope.players[data.id].acc = data.acc;
   };
 
 

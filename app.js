@@ -27,7 +27,6 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-
 var score = require('./private/score.js');
 
 // INITIAL VARIABLES
@@ -42,7 +41,7 @@ io.sockets.on('connection', function(socket){
         if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
         
         if(!isBrowser) {
-          _to[sessionID].players[socket.id] = { score: 0 };
+          _to[sessionID].players[socket.id] = { id: socket.id, score: 0,acc:0};
         }
           // emit player data
           io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
@@ -64,38 +63,54 @@ io.sockets.on('connection', function(socket){
           });
     });
 
-  // ON DEVICE MOTION
-  socket.on('device-motion', function(data){
+  socket.on('song-start', function(data){
     socket.get('sessionID', function(err, sessionID){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-        //console.log('device-motion:' + data);
-            
-          // put logic here used to determine what actions to emit to the browser
-          //   ie. update scores
-          // in a different location. have 
-        socket.broadcast.to(sessionID).emit('action', data);
-    
+        _to[sessionID].start = 1;
+
       } else {
         console.log("No sessionID");
       }
     });
   });
 
+  // ON DEVICE MOTION
+  socket.on('device-motion', function(data){
+    socket.get('sessionID', function(err, sessionID){
+      if (err) {
+        console.log(err);
+      } else if (sessionID) {
+        if(_to[sessionID].start){
+         socket.broadcast.to(sessionID).emit('action', data);    
+        }
+      } else {
+        console.log("No sessionID");
+      }
+    });
+  });
+  
   // ON TWERK
   socket.on('twerk', function(data){
     socket.get('sessionID', function(err, sessionID){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-	_to[sessionID].players[socket.id].score += score.get_score(data,80.);
-	socket.broadcast.emit('player-update',{'id': socket.id, 'score': _to[sessionID].players[socket.id].score });
+        if(_to[sessionID].start){
+          var adds = score.get_score(data,80.);
+          var score_add = adds[0];
+          var acc_add = adds[1];
+          _to[sessionID].players[socket.id].score += score_add;
+          _to[sessionID].players[socket.id].acc += acc_add;
+          socket.broadcast.emit('player-update', _to[sessionID].players[socket.id]);
+        }
       } else {
         console.log("No sessionID");
       }
     });
   });
+
 
   // On song end
   socket.on('song-end', function(data){
@@ -103,8 +118,8 @@ io.sockets.on('connection', function(socket){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-          io.sockets.socket(socket.id).emit("player-data", _to[sessionID].players);
-        socket.broadcast.to(sessionID).emit('end', _to[sessionID].players);
+        _to[sessionID].start = 0;
+        io.sockets.in(sessionID).emit("game-end", _to[sessionID].players);
       } else {
         console.log("No sessionID");
       }
@@ -116,4 +131,3 @@ io.sockets.on('connection', function(socket){
 
 server.listen(8080);
 console.log("Express server listening on port 8080");
-

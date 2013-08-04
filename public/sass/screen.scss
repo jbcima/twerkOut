@@ -50,3 +50,19 @@ font-family: 'Open Sans', sans-serif;
 		background: rgba(255,255,255,0.7);
 	}
 }
+
+#controller {
+	background: black;
+	color: white;
+	width: 100%;
+	text-align: center;
+	h1 {
+		@include adjust-font-size-to(60px);
+		font-weight: 600;
+
+	}	
+	h2 {
+		@include adjust-font-size-to(40px);
+		font-weight: 600;
+	}
+}

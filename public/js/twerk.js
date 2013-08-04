@@ -21,6 +21,11 @@ sessionID = sessionID.toString();
 joinSession();
 
 
+// socket.on('joined', function(data) {
+//   $('#number').text(data);
+// });
+
+
 socket.on('end',function(data){
   console.log(data);
 });

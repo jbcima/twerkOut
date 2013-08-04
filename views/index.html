@@ -8,6 +8,11 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 
 
+<!-- gauges -->
+<script type="text/javascript" src="/js/justgage.1.0.1.min.js"></script>
+<script type="text/javascript" src="/js/raphael.2.1.0.min.js"></script>
+
+
 <!-- angulayrs -->
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/controllers.js"></script>
@@ -28,10 +33,20 @@
 
 		function onYouTubePlayerReady(playerId) {
 			var ytplayer = document.getElementById("twerkoutPlayer");
+			 ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
 		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
 		        scope.startGame(ytplayer);
 		    });
 		}
+		function onytplayerStateChange(newState) {
+		   var ytplayer = document.getElementById("twerkoutPlayer");
+		   if(newState == 0) {
+		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
+		        scope.endGame(ytplayer);
+		    });
+		   }
+		}
+
 	  </script>
 	</div>
 
