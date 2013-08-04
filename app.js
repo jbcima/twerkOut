@@ -15,7 +15,6 @@ app.configure(function(){
 
   app.use(express.favicon());
   app.use(express.logger('dev'));
-  app.use(require("connect-livereload")({port: 35729}));
   app.use(express.methodOverride());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'views')));
