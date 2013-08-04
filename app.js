@@ -31,9 +31,7 @@ app.configure('development', function(){
 var score = require('./private/score.js');
 
 // INITIAL VARIABLES
-var _to = {
-  players: {}
-}
+var _to = {};
 
 // (note: this is the servers connection to everything)
 io.sockets.on('connection', function(socket){
@@ -41,11 +39,27 @@ io.sockets.on('connection', function(socket){
   socket.on('join', function(sessionID){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
-          _to.players[socket.id] = { score: 0 };
-          io.sockets.socket(socket.id).emit("player-data", _to.players);
+          if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
+          _to[sessionID].players[socket.id] = { score: 0 };
+          // emit player data
+          io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
       }
     });
   });
+
+  socket.on('disconnect', function(sessionID){
+          socket.get('sessionID', function(err, sessionID){
+            if (err) {
+              console.log(err);
+            } else if (sessionID) {
+              delete _to[sessionID].players[socket.id];
+              // emit player data
+              io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
+            } else {
+              console.log("No sessionID");
+            }
+          });
+    });
 
   // ON DEVICE MOTION
   socket.on('device-motion', function(data){
@@ -72,8 +86,8 @@ io.sockets.on('connection', function(socket){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-	_to.players[socket.id].score += score.get_score(data,80.);
-	socket.broadcast.emit('player-update',{'id': socket.id, 'score':_to.players[socket.id].score});
+	_to[sessionID].players[socket.id].score += score.get_score(data,80.);
+	socket.broadcast.emit('player-update',{'id': socket.id, 'score':_to[sessionID].players[socket.id].score});
       } else {
         console.log("No sessionID");
       }
@@ -86,8 +100,8 @@ io.sockets.on('connection', function(socket){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-          io.sockets.socket(socket.id).emit("player-data", _to.players);
-        socket.broadcast.to(sessionID).emit('end', _to.players);
+          io.sockets.socket(socket.id).emit("player-data", _to[sessionID].players);
+        socket.broadcast.to(sessionID).emit('end', _to[sessionID].players);
       } else {
         console.log("No sessionID");
       }

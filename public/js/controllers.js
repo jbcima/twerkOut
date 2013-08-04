@@ -13,6 +13,10 @@ app.controller('AppCtrl', function ($scope, socket) {
   });
 
   socket.on('player-data', function(data) {
+    $scope.playerData(data);
+  });
+
+  socket.on('player-update', function(data) {
     $scope.playerUpdate(data);
   });
     
@@ -31,14 +35,19 @@ app.controller('AppCtrl', function ($scope, socket) {
     console.log($scope.sessionID);
 
     socket.emit('join', $scope.sessionID);
-    console.log('HudCtrli');
   };
 
   $scope.init();
 
-  $scope.playerUpdate = function (data) {
+  $scope.playerData = function (data) {
     $scope.players = data;
     console.log(data);
+  };
+
+  $scope.playerUpdate = function (data) {
+    $scope.players[data.id].score = data.score;
+    console.log(data.id);
+    console.log($scope.players);
   };
 
 });
