@@ -166,12 +166,13 @@ body {
 }
 /* line 64, ../sass/screen.scss */
 #controller h2 {
-  font-size: 2.5em;
+  font-size: 6.25em;
   line-height: 1.2em;
   font-weight: 600;
+  margin: 30px;
 }
 
-/* line 70, ../sass/screen.scss */
+/* line 71, ../sass/screen.scss */
 #room {
   position: absolute;
   left: 0;
@@ -181,12 +182,6 @@ body {
   color: white;
   text-shadow: 3px 3px 3px grey;
   margin: 30px;
-  font-size: 3.75em;
-  line-height: 1.2em;
-}
-
-/* line 83, ../sass/screen.scss */
-#number {
   font-size: 3.75em;
   line-height: 1.2em;
 }
