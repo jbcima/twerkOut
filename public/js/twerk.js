@@ -33,12 +33,12 @@ window.addEventListener('shake', function(event) {
 
 window.addEventListener('devicemotion', function(){
 		
-	// socket.emit('device-motion', { 
-	// 	time: new Date().getTime(),
-	// 	x: event.accelerationIncludingGravity.x, 
-	// 	y: event.accelerationIncludingGravity.y, 
-	// 	z: event.accelerationIncludingGravity.z
-	// });
+	socket.emit('device-motion', { 
+		time: new Date().getTime(),
+		x: event.accelerationIncludingGravity.x, 
+		y: event.accelerationIncludingGravity.y, 
+		z: event.accelerationIncludingGravity.z
+	});
 
 
 }, false); 
