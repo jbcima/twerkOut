@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.twerk = function(req, res){
-  res.render('twerk');
+  res.render('twerk.html');
 };
 
 exports.partials = function (req, res) {
