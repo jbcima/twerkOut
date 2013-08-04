@@ -76,11 +76,6 @@ app.controller('AppCtrl', function ($scope, socket) {
     $scope.players[data.id].acc = data.acc;
   };
 
-   $scope.$watch('players', function(newValue) {
-     console.dir(newValue);
-     
-   });
-
 
 
 });

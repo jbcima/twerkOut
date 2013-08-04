@@ -37,13 +37,13 @@ io.sockets.on('connection', function(socket){
   socket.on('join', function(sessionID, isBrowser){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
-        if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
+        if(!_to[sessionID]) { _to[sessionID]= { number: 0, players: {} }; };
         if(!isBrowser) {
-          _to[sessionID].players[socket.id] = { id: socket.id, score: 0,acc:0};
+          _to[sessionID].players[socket.id] = { id: socket.id, score: 0,acc:0, number: _to[sessionID].number++};
         }
           // emit player data
           io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
-          socket.emit('joined', sessionID);
+          socket.emit('joined', _to[sessionID].players[socket.id]);
       }
     });
   });
