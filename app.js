@@ -42,7 +42,7 @@ app.get('/twerk', routes.twerk);
 
 // INITIAL VARIABLES
 var _to = {
-  players: []
+  players: {}
 }
 
 // (note: this is the servers connection to everything)
@@ -51,9 +51,8 @@ io.sockets.on('connection', function(socket){
   socket.on('join', function(sessionID){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
-        var currentPlayer = _to.players.length;
-        _to.players.push({ socket: socket.id, id: currentPlayer, score: 0});
-        io.sockets.socket(socket.id).emit("player-data", _to.players[currentPlayer]);
+          _to.players[socket.id] = { score: 0 };
+          io.sockets.socket(socket.id).emit("player-data", _to.players[socket.id]);
       }
     });
   });
