@@ -22,32 +22,17 @@ joinSession();
 
 // on shake 
 window.addEventListener('shake', function(event) {
-	socket.emit('device-motion', 'twerk');
-	console.log('twerk');
+	socket.emit('twerk', event.timeDifference);
 }, false);
 
+window.addEventListener('devicemotion', function(){
+		
+	socket.emit('device-motion', { 
+		time: new Date().getTime(),
+		x: event.accelerationIncludingGravity.x, 
+		y: event.accelerationIncludingGravity.y, 
+		z: event.accelerationIncludingGravity.z
+	});
 
 
-if(window.DeviceOrientationEvent) {
-  window.addEventListener("deviceorientation", function(event) {
-    var rotateDegrees = event.alpha;
-    // var leftToRight = event.gamma;
-    // var frontToBack = event.beta;
-    angle = Math.round(rotateDegrees);
-    // handleOrientationEvent(frontToBack, leftToRight,
-    // rotateDegrees);
-  }, false);
-}
-
-
-
-// if(window.DeviceMotionEvent) {
-//   window.addEventListener("devicemotion", function(event) {
-//     var rotateDegrees = event.alpha;
-//     // var leftToRight = event.gamma;
-//     // var frontToBack = event.beta;
-//     angle = Math.round(rotateDegrees);
-//     // handleOrientationEvent(frontToBack, leftToRight,
-//     // rotateDegrees);
-//   }, false);
-// }
+}, false); 

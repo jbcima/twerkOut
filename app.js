@@ -48,21 +48,45 @@ io.sockets.on('connection', function(socket){
         socket.broadcast.to(sessionID).emit('joined', sessionID);
     });
   });
+
+
+
+  // ON DEVICE MOTION
   socket.on('device-motion', function(data){
     socket.get('sessionID', function(err, sessionID){
       if (err) {
         console.log(err);
       } else if (sessionID) {
-        console.log(data);
+        console.log('device-motion:' + data);
+            
+          // put logic here used to determine what actions to emit to the browser
+          //   ie. update scores
+          // in a different location. have 
+        socket.broadcast.to(sessionID).emit('action', data);
+    
+      } else {
+        console.log("No sessionID");
+      }
+    });
+  });
+
+  // ON TWERK
+  socket.on('twerk', function(data){
+    socket.get('sessionID', function(err, sessionID){
+      if (err) {
+        console.log(err);
+      } else if (sessionID) {
+        console.log('twerk: ' + data);
         socket.broadcast.to(sessionID).emit('action', data);
       } else {
         console.log("No sessionID");
       }
     });
   });
-  socket.on('testing', function(data){
-    console.log(data);
-  });
+
+
+
+
 });
 
 
