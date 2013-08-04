@@ -49,7 +49,7 @@ app.controller('AppCtrl', function ($scope, socket) {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
     console.log($scope.sessionID);
-
+    $('#room').text($scope.sessionID);
     socket.emit('join', $scope.sessionID, 1);
 
   };
@@ -75,6 +75,12 @@ app.controller('AppCtrl', function ($scope, socket) {
     console.log($scope.players);
     $scope.players[data.id].acc = data.acc;
   };
+
+   $scope.$watch('players', function(newValue) {
+     console.dir(newValue);
+     
+   });
+
 
 
 });

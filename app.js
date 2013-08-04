@@ -38,12 +38,12 @@ io.sockets.on('connection', function(socket){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
         if(!_to[sessionID]) { _to[sessionID]= { players: {} }; };
-        
         if(!isBrowser) {
           _to[sessionID].players[socket.id] = { id: socket.id, score: 0,acc:0};
         }
           // emit player data
           io.sockets.in(sessionID).emit("player-data", _to[sessionID].players);
+          socket.emit('joined', sessionID);
       }
     });
   });

@@ -66,3 +66,16 @@ font-family: 'Open Sans', sans-serif;
 		font-weight: 600;
 	}
 }
+
+#room {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100px; 
+	color: white;
+	text-shadow: 3px 3px 3px grey;
+	margin: 30px;
+	@include adjust-font-size-to(60px);
+
+}

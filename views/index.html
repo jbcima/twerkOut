@@ -9,17 +9,18 @@
 
 
 <!-- gauges -->
-<script type="text/javascript" src="/js/justgage.1.0.1.min.js"></script>
-<script type="text/javascript" src="/js/raphael.2.1.0.min.js"></script>
+<script src="/js/gauge.min.js"></script>
 
 
 <!-- angulayrs -->
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/controllers.js"></script>
 <script type="text/javascript" src="/js/services.js"></script>
+<script type="text/javascript" src="/js/directives.js"></script>
 
 </head>
 <body ng-app="app" ng-controller="AppCtrl" id="app">
+	<h1 id="room"></h1>
 	<div id="youtube-video"> 
 	  <div id="ytapiplayer">
 	    You need Flash player 8+ and JavaScript enabled to view this video.
@@ -53,6 +54,7 @@
 
 	<ul id="scoreboard" class="cf">
 		<li ng-repeat="player in players">
+<!-- 			<div id="gauge{{$index + 1}}" class="200x160px" gauge acc="{{player.acc}}"></div> -->
 			<h1 class="name"> Player {{ $index + 1 }} </h1>
 			<h2 class="score">{{ player.score }}</h2>
 		</li>
