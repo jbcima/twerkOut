@@ -150,3 +150,37 @@ body {
   width: 100%;
   padding-top: 20px;
 }
+
+/* line 54, ../sass/screen.scss */
+#controller {
+  background: black;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+/* line 59, ../sass/screen.scss */
+#controller h1 {
+  font-size: 3.75em;
+  line-height: 1.2em;
+  font-weight: 600;
+}
+/* line 64, ../sass/screen.scss */
+#controller h2 {
+  font-size: 2.5em;
+  line-height: 1.2em;
+  font-weight: 600;
+}
+
+/* line 70, ../sass/screen.scss */
+#room {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100px;
+  color: white;
+  text-shadow: 3px 3px 3px grey;
+  margin: 30px;
+  font-size: 3.75em;
+  line-height: 1.2em;
+}
