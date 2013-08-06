@@ -1,9 +1,9 @@
 {
   "name": "twerkout",
-  "version": "0.0.1",
+  "version": "0.0.1-2",
   "private": true,
   "scripts": {
-    "start": "node app"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "~3.3.4",
@@ -16,5 +16,13 @@
     "grunt-contrib-compass": "~0.3.0",
     "request": "~2.22.0",
     "matchdep": "~0.1.2"
-  }
+  },
+  "subdomain": "twerkOUT",
+  "engines": {
+    "node": "0.8.x"
+  },
+  "domains": [
+    "twerkout.co",
+    "www.twerkout.co"
+  ]
 }

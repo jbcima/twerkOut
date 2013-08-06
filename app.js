@@ -37,7 +37,7 @@ io.sockets.on('connection', function(socket){
   socket.on('join', function(sessionID, isBrowser){
     socket.set('sessionID', sessionID, function(){
       if(socket.join(sessionID)) {
-        if(!_to[sessionID]) { _to[sessionID]= { number: 0, players: {} }; };
+        if(!_to[sessionID]) { _to[sessionID]= { number: 1, players: {} }; };
         if(!isBrowser) {
           _to[sessionID].players[socket.id] = { id: socket.id, score: 0,acc:0, number: _to[sessionID].number++};
         }

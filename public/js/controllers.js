@@ -9,7 +9,7 @@ app.controller('AppCtrl', function ($scope, socket) {
   // ================
 
   socket.on('joined', function(data) {
-    console.log('joined: ' + data.session + ', ' + data.socketID);
+    console.log(data);
   });
 
   socket.on('player-data', function(data) {
@@ -48,7 +48,7 @@ app.controller('AppCtrl', function ($scope, socket) {
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
-    console.log($scope.sessionID);
+    //console.log($scope.sessionID);
     $('#room').text($scope.sessionID);
     socket.emit('join', $scope.sessionID, 1);
 
@@ -66,7 +66,7 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.playerData = function (data) {
     $scope.players = data;
-    console.log(data);
+    //console.log(data);
   };
 
   $scope.playerUpdate = function (data) {
