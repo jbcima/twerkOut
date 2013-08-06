@@ -1,18 +1,10 @@
-
-/**
- * Module dependencies.
- */
-
 var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
-  , routes = require('./routes')
   , path = require('path');
 
 app.configure(function(){
-  //app.set('port', process.env.PORT || 3000);
-
   app.use(express.favicon());
   app.use(express.logger('dev'));
   app.use(express.methodOverride());
@@ -26,7 +18,7 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-var score = require('./private/score.js');
+var score = require('./lib/score.js');
 
 // INITIAL VARIABLES
 var _to = {};

@@ -2,6 +2,7 @@ twerkOut
 ========
 
 team members:
-ricky medina (the metabarista)
-jeremy cimafonte
 
+- ricky medina (the metabarista)
+- jeremy cimafonte
+- dikdik

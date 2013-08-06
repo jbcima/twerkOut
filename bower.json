@@ -1,9 +1,7 @@
 {
-  "name": "application-name",
-  "version": "0.0.0",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "components"
-  ]
+  "name": "twerkout",
+  "version": "0.0.2",
+  "dependencies": {
+    "angular": "~1.0.7"
+  }
 }
