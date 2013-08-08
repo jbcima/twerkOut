@@ -5,11 +5,11 @@ var express = require('express')
 , path = require('path');
 
 app.configure('development', function(){
-  var liveReloadPort = 35729;
-  app.use(require('connect-livereload')({
-    port: liveReloadPort
-  }));
-  app.use(express.errorHandler());
+    var liveReloadPort = 35729;
+    app.use(require('connect-livereload')({
+	port: liveReloadPort
+    }));
+    app.use(express.errorHandler());
 });
 
 app.configure(function(){
@@ -119,7 +119,12 @@ io.sockets.on('connection', function(socket){
 		current_player.multiplier += mult_add;
 		var many = 4;
 		current_player.message = message.get_message(current_player.acc_array.slice(-many),many);
-		console.log('msg: '+current_player.message);
+		if (current_player.acc == 100.){
+		    current_player.twerkOut = 1;
+		    current_player.score += 1000;
+		    current_player.acc = 0;
+		    current_player.message = 'twerkOUT!';
+		}
 		socket.broadcast.emit('player-update', current_player);
 		if (current_player.acc_array.length > many){
 		    current_player.acc_array = current_player.acc_array.slice(-many);
