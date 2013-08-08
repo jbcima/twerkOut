@@ -1,12 +1,19 @@
+var interfaceElms = function(){};
+
+interfaceElms.prototype = {
+    options: {},
+    setScoreBars: function() {
+	$('#scoreboard .score-inner').width($('#scoreboard li').width());
+    }
+};
+
 $(document).ready(function() {
 	$(window).resize(function() {
-	  setScoreBars();
+	  interface.setScoreBars();
 	});
 
-	function setScoreBars(){
-		$('#scoreboard .score-inner').width($('#scoreboard li').width())
-	}
-
-	setScoreBars();
+	interface.setScoreBars();
 
 });
+
+var interface = new interfaceElms();
