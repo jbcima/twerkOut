@@ -27,6 +27,7 @@ getName();
 
 socket.on('joined', function(data) {
     socket.emit('named', name);
+    document.getElementById('audioLoop').play();
 });
 
 
