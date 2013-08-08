@@ -534,6 +534,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
 }
 
+/* line 41, ../sass/_timeline.scss */
+#final-score {
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* line 49, ../sass/_timeline.scss */
+#final-score h1 {
+  font-size: 1.875em;
+  line-height: 1.6em;
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
 /* line 1, ../sass/_controller.scss */
 #controller {
   background: white;

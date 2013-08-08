@@ -171,7 +171,7 @@ io.sockets.on('connection', function(socket){
 		console.log(err);
 	    } else if (sessionID) {
 		_to[sessionID].start = 0;
-		io.sockets.in(sessionID).emit("end", _to[sessionID].players);
+		io.sockets.in(sessionID).emit("final-score", _to[sessionID].players);
 	    } else {
 		console.log("No sessionID");
 	    }
