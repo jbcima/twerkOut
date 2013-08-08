@@ -4,11 +4,17 @@
 	width: 100%;
 	text-align: center;
 	margin: 25px;
+	#logo {
+		width: 313px;
+		background-image: url('/img/twerkout.gif');
+		background-repeat: no-repeat;
+		height: 63px;
+		margin: 0px auto;
+	}
 	h1 {
-		@include adjust-font-size-to(60px);
+		@include adjust-font-size-to(40px);
 		font-weight: 600;
 		color: #4A4A4A;
-		font-family: 'Fighting Spirit TBS';
 
 	}	
 	h2 {

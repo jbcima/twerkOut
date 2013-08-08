@@ -542,14 +542,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   margin: 25px;
 }
 /* line 7, ../sass/_controller.scss */
+#controller #logo {
+  width: 313px;
+  background-image: url("/img/twerkout.gif");
+  background-repeat: no-repeat;
+  height: 63px;
+  margin: 0px auto;
+}
+/* line 14, ../sass/_controller.scss */
 #controller h1 {
-  font-size: 3.75em;
+  font-size: 2.5em;
   line-height: 1.2em;
   font-weight: 600;
   color: #4A4A4A;
-  font-family: 'Fighting Spirit TBS';
 }
-/* line 14, ../sass/_controller.scss */
+/* line 20, ../sass/_controller.scss */
 #controller h2 {
   color: #4A4A4A;
   font-size: 1.875em;
