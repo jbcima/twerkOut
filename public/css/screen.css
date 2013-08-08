@@ -312,7 +312,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 /* line 41, ../sass/_player.scss */
 #scoreboard li .score-container .score {
-  width: 100px;
+  width: 0%;
   height: 40px;
   overflow: hidden;
   position: relative;
