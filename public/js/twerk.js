@@ -6,6 +6,7 @@ var socket = io.connect('/')
 
 var sessionID= '';
 
+var socketID = null;
 
 function joinSession() {
     sessionID = prompt("enter room number:");
@@ -14,6 +15,8 @@ function joinSession() {
 	location.reload();
     else {
 	socket.emit('join', sessionID);
+	console.log(socket.id);
+	socketID = socket.id;
     }
 }
 
@@ -36,8 +39,9 @@ socket.on('end',function(data){
 });
 
 socket.on('player-update' ,function(data){
-    console.dir(data);
-    $('#name').text(data.name.toString());
+    if (socketID == socket.id) {
+	//$('#name').text(data.name.toString());
+    }
 });
 
 
