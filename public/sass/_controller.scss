@@ -1,9 +1,9 @@
 #controller {
-	background: #a3a3a3;
+	background: white;
 	color: white;
 	width: 100%;
 	text-align: center;
-	margin: 25px;
+	margin-top: 25px;
 	#logo {
 		width: 313px;
 		background-image: url('/img/twerkout.gif');
@@ -14,13 +14,14 @@
 	h1 {
 		@include adjust-font-size-to(40px);
 		font-weight: 600;
-		color: #4A4A4A;
+		color: black;
 
 	}	
 	h2 {
-		color: #4A4A4A;
-		@include adjust-font-size-to(30px);
-		font-weight: 600;
+		font-family: 'Open Sans', sans-serif;
+		color: black;
+		@include adjust-font-size-to(34px);
+		font-weight: 400;
 		margin: 30px;
 	}
 }

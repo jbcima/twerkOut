@@ -535,11 +535,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 1, ../sass/_controller.scss */
 #controller {
-  background: #a3a3a3;
+  background: white;
   color: white;
   width: 100%;
   text-align: center;
-  margin: 25px;
+  margin-top: 25px;
 }
 /* line 7, ../sass/_controller.scss */
 #controller #logo {
@@ -554,14 +554,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 2.5em;
   line-height: 1.2em;
   font-weight: 600;
-  color: #4A4A4A;
+  color: black;
 }
 /* line 20, ../sass/_controller.scss */
 #controller h2 {
-  color: #4A4A4A;
-  font-size: 1.875em;
-  line-height: 1.6em;
-  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  font-size: 2.125em;
+  line-height: 1.41176em;
+  font-weight: 400;
   margin: 30px;
 }
 
