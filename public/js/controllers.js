@@ -78,6 +78,7 @@ app.controller('AppCtrl', function ($scope, socket) {
     console.log($scope.players);
     $scope.players[data.id].acc = data.acc;
     $scope.players[data.id].name = data.name;
+      interface.setScoreBars();
   };
 
 

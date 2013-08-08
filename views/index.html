@@ -1,55 +1,55 @@
 <html>
-<head>
-<title>twerkOut</title>
-<link rel="stylesheet" type="text/css" href="/css/screen.css">
-<script src="/js/jquery.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/swfobject.js"></script>
-<script src="/js/angular.min.js"></script>
+  <head>
+    <title>twerkOut</title>
+    <link rel="stylesheet" type="text/css" href="/css/screen.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/swfobject.js"></script>
+    <script src="/js/angular.min.js"></script>
+    
+    
+    <!-- gauges -->
+    
+    
+    <!-- angulayrs -->
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers.js"></script>
+    <script type="text/javascript" src="/js/services.js"></script>
+    <script type="text/javascript" src="/js/directives.js"></script>
+    
+    
+  </head>
+  <body ng-app="app" ng-controller="AppCtrl" id="app">
+    <div id="connectBanner"/>
+    <i class="icon-mobile-phone icon-4x"></i>
+    <h1>go to <u>www.twerkout.co</u></h1>
+    <h2>room #: <span id="room"></span>
+</div>
 
+<div id="song-selector">
+  <div id="current-song-container">
+    <div id="current-song">
+      <p><span>Stupid Hoe</span></p>
+      <p>Nicki Minaj</p>
+    </div>
+  </div>
+  <div class="arrow-left "></div>
+  <div class="arrow-left-2"></div>
+  <div class="arrow-right"></div>
+  <div class="arrow-right-2"></div>
+</div>
 
-<!-- gauges -->
-
-
-<!-- angulayrs -->
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/controllers.js"></script>
-<script type="text/javascript" src="/js/services.js"></script>
-<script type="text/javascript" src="/js/directives.js"></script>
-
-
-</head>
-<body ng-app="app" ng-controller="AppCtrl" id="app">
-	<div id="connectBanner"/>
-		<i class="icon-mobile-phone icon-4x"></i>
-		<h1>go to <u>www.twerkout.co</u></h1>
-		<h2>room #: <span id="room"></span>
-	</div>
-
-	<div id="song-selector">
-		<div id="current-song-container">
-			<div id="current-song">
-				<p><span>Stupid Hoe</span></p>
-				<p>Nicki Minaj</p>
-			</div>
-		</div>
-		<div class="arrow-left "></div>
-		<div class="arrow-left-2"></div>
-		<div class="arrow-right"></div>
-		<div class="arrow-right-2"></div>
-	</div>
-
-	<ul id="scoreboard" class="cf">
-		<li ng-repeat="player in players">
-			<h1 class="name">{{ player.name }}</h1>
-			<div class="score-container">
-				<p>{{ player.score }}</p>
-				<div class="score" ng-style={"width:{{player.acc}}%"}>
-					<div class="score-inner"></div>
-				</div>
-			</div>
-		</li>
-	</ul>
+<ul id="scoreboard" class="cf">
+  <li ng-repeat="player in players">
+    <h1 class="name">{{ player.name }}</h1>
+    <div class="score-container">
+      <p>{{ player.score }}</p>
+      <div class="score" ng-style="{ width: player.acc + '%' }" >
+	<div class="score-inner"></div>
+      </div>
+    </div>
+  </li>
+</ul>
 
 <script type="text/javascript" src="/js/interface.js"></script>
 </body>
