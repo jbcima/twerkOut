@@ -73,6 +73,10 @@
 
 	  </script>
 	</div>
+	
+	<div id="final-score"  ng-show="finalScore">
+		<h1 ng-repeat="player in finalPlayers">{{ player.name }} - {{ player.score }}</h1>
+	</div>
 
 	<ul id="scoreboard" class="cf">
 		<li ng-repeat="player in players">

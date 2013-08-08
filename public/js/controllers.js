@@ -19,7 +19,10 @@ app.controller('AppCtrl', function ($scope, socket) {
   socket.on('player-update', function(data) {
     $scope.playerUpdate(data);
   });
-    
+ 
+  socket.on('final-score', function(data) {
+    $scope.displayScoreboard(data);
+  });   
 
   // Private helpers
   // ===============
@@ -56,6 +59,9 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   // video 
   $scope.percentageElapsed = 0;
+  $scope.finalScore = 0;
+  $scope.finalPlayers = [];
+
   // video parameters/attributes
   $scope.video = {
     params: { allowScriptAccess: "always" },
@@ -126,6 +132,11 @@ app.controller('AppCtrl', function ($scope, socket) {
     $scope.players[data.id].acc = data.acc;
     $scope.players[data.id].name = data.name;
       interface.setScoreBars();
+  };
+
+  $scope.displayScoreboard = function (data) {
+    $scope.finalScore = 1;
+    $scope.finalPlayers = data;
   };
 
 
