@@ -23,7 +23,7 @@ function getName() {
 }
 
 joinSession();
-getName()
+getName();
 
 socket.on('joined', function(data) {
     console.dir(data);
