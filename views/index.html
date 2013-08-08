@@ -2,10 +2,10 @@
 <head>
 <title>twerkOut</title>
 <link rel="stylesheet" type="text/css" href="/css/screen.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+<script src="/js/swfobject.js"></script>
+<script src="/js/angular.min.js"></script>
 
 
 <!-- gauges -->
@@ -18,47 +18,40 @@
 <script type="text/javascript" src="/js/services.js"></script>
 <script type="text/javascript" src="/js/directives.js"></script>
 
+
 </head>
 <body ng-app="app" ng-controller="AppCtrl" id="app">
-	<h1 id="room"></h1>
-	<div id="youtube-video"> 
-	  <div id="ytapiplayer">
-	    You need Flash player 8+ and JavaScript enabled to view this video.
-	  </div>
-
-	  <script type="text/javascript">
-	    var params = { allowScriptAccess: "always" };
-	    var atts = { id: "twerkoutPlayer" };
-	    swfobject.embedSWF("https://www.youtube.com/apiplayer?video_id=pn1VGytzXus&version=3&enablejsapi=1&playerapiid=myytflashplayer",
-	                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
-
-		function onYouTubePlayerReady(playerId) {
-			var ytplayer = document.getElementById("twerkoutPlayer");
-			 ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
-		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
-		        scope.startGame(ytplayer);
-		    });
-		}
-		function onytplayerStateChange(newState) {
-		   var ytplayer = document.getElementById("twerkoutPlayer");
-		   if(newState == 0) {
-		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
-		        scope.endGame(ytplayer);
-		    });
-		   }
-		}
-
-	  </script>
+	<div id="connectBanner"/>
+		<i class="icon-mobile-phone icon-4x"></i>
+		<h1>go to <u>www.twerkout.co</u></h1>
+		<h2>room #: <span id="room"></span>
 	</div>
 
+	<div id="song-selector">
+		<div id="current-song-container">
+			<div id="current-song">
+				<p><span>Stupid Hoe</span></p>
+				<p>Nicki Minaj</p>
+			</div>
+		</div>
+		<div class="arrow-left "></div>
+		<div class="arrow-left-2"></div>
+		<div class="arrow-right"></div>
+		<div class="arrow-right-2"></div>
+	</div>
 
 	<ul id="scoreboard" class="cf">
 		<li ng-repeat="player in players">
-<!-- 			<div id="gauge{{$index + 1}}" class="200x160px" gauge acc="{{player.acc}}"></div> -->
-			<h1 class="name"> Player {{ player.number }} </h1>
-			<h2 class="score">{{ player.score }}</h2>
+			<h1 class="name">{{ player.name }}</h1>
+			<div class="score-container">
+				<p>{{ player.score }}</p>
+				<div class="score" ng-style={"width:{{player.acc}}%"}>
+					<div class="score-inner"></div>
+				</div>
+			</div>
 		</li>
 	</ul>
 
+<script type="text/javascript" src="/js/interface.js"></script>
 </body>
 </html>

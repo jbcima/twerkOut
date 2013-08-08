@@ -1,13 +1,20 @@
 @import "compass";
 @import "compass/css3";
 @import "compass/reset";
-@import "clearfix";
+@import "_clearfix";
+
+@import "_colors";
+@import "_intro";
+@import "_player";
+
+@import "../font-awesome/scss/font-awesome";
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800);
 
 
 body {
-font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	background-color: $black;
 }
 
 * {
@@ -19,37 +26,6 @@ font-family: 'Open Sans', sans-serif;
 	height: 100% !important;
 }
 
-#scoreboard {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	li {
-		text-align: center;
-		h1 {
-			@include adjust-font-size-to(36px);
-			font-weight: 600;
-			width: 100%;
-			padding-top: 10px;
-		}
-		h2 {
-			@include adjust-font-size-to(48px);
-			line-height: 1em;
-			font-weight: 300;
-			width: 100%;
-			padding-top: 20px;
-		}
-
-		float: left;
-		width: 200px;
-		height: 175px;
-		-webkit-transform: skewY(-2deg);
-		border-radius: 4px;
-		box-shadow: 2px 2px 50px;
-		margin: 30px;
-		background: rgba(255,255,255,0.7);
-	}
-}
 
 #controller {
 	background: black;
@@ -68,15 +44,14 @@ font-family: 'Open Sans', sans-serif;
 	}
 }
 
-#room {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	height: 100px; 
-	color: white;
-	text-shadow: 3px 3px 3px grey;
-	margin: 30px;
-	@include adjust-font-size-to(60px);
-
-}
+// #room {
+// 	position: absolute;
+// 	left: 0;
+// 	right: 0;
+// 	top: 0;
+// 	height: 100px; 
+// 	color: white;
+// 	text-shadow: 3px 3px 3px grey;
+// 	margin: 30px;
+// 	@include adjust-font-size-to(60px);
+// }

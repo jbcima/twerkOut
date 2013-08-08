@@ -63,6 +63,9 @@ app.controller('AppCtrl', function ($scope, socket) {
     socket.emit('song-end', $scope.sessionID);
   }
 
+  $scope.passCurrentTime = function (data) {
+    // current time is data.
+  };
 
   $scope.playerData = function (data) {
     $scope.players = data;

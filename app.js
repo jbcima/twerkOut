@@ -4,6 +4,14 @@ var express = require('express')
   , io = require('socket.io').listen(server)
   , path = require('path');
 
+app.configure('development', function(){
+  var liveReloadPort = 35729;
+  app.use(require('connect-livereload')({
+    port: liveReloadPort
+  }));
+  app.use(express.errorHandler());
+});
+
 app.configure(function(){
   app.use(express.favicon());
   app.use(express.logger('dev'));
@@ -12,10 +20,6 @@ app.configure(function(){
   app.use(express.static(path.join(__dirname, 'views')));
   app.use(express.static(path.join(__dirname, 'public')));
   app.use(express.bodyParser());
-});
-
-app.configure('development', function(){
-  app.use(express.errorHandler());
 });
 
 var score = require('./lib/score.js');
