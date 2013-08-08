@@ -100,32 +100,34 @@ io.sockets.on('connection', function(socket){
 	    if (err) {
 		console.log(err);
 	    } else if (sessionID) {
-		var current_player = _to[sessionID].players[socket.id];
-		var scoring = score.get_score(
-		    data,
-		    80.,
-		    current_player.multiplier,
-		    current_player.acc,
-		    current_player.acc_array[current_player.acc_array.length-1]
-		);
-		var score_add = scoring[0];
-		var acc_add = scoring[1];
-		var mult_add = scoring[2];
-		current_player.score += score_add;
-		current_player.acc += acc_add;
-		//make sure accuracy isn't less than 0
-		current_player.acc = Math.max(0,current_player.acc);
-		current_player.acc_array.push(acc_add);
-		current_player.multiplier += mult_add;
-		var many = 4;
-		current_player.message = message.get_message(current_player.acc_array.slice(-many),many);
-		if (current_player.acc == 100.){
-		    current_player.twerkOut = 1;
-		    current_player.score += 1000;
-		    current_player.acc = 0;
-		    current_player.message = 'twerkOUT!';
+		if(_to[sessionID].start){
+		    var current_player = _to[sessionID].players[socket.id];
+		    var scoring = score.get_score(
+			data,
+			80.,
+			current_player.multiplier,
+			current_player.acc,
+			current_player.acc_array[current_player.acc_array.length-1]
+		    );
+		    var score_add = scoring[0];
+		    var acc_add = scoring[1];
+		    var mult_add = scoring[2];
+		    current_player.score += score_add;
+		    current_player.acc += acc_add;
+		    //make sure accuracy isn't less than 0
+		    current_player.acc = Math.max(0,current_player.acc);
+		    current_player.acc_array.push(acc_add);
+		    current_player.multiplier += mult_add;
+		    var many = 4;
+		    current_player.message = message.get_message(current_player.acc_array.slice(-many),many);
+		    if (current_player.acc == 100.){
+			current_player.twerkOut = 1;
+			current_player.score += 1000;
+			current_player.acc = 0;
+			current_player.message = 'twerkOUT!';
+		    }
+		    socket.broadcast.emit('player-update', current_player);
 		}
-		socket.broadcast.emit('player-update', current_player);
 		if (current_player.acc_array.length > many){
 		    current_player.acc_array = current_player.acc_array.slice(-many);
 		}
