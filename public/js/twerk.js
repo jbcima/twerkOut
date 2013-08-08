@@ -17,15 +17,16 @@ function joinSession() {
     }
 }
 
+var name = '';
 function getName() {
     name = prompt("enter your name:");
-    socket.emit('named', name);
 }
 
 joinSession();
 getName();
 
 socket.on('joined', function(data) {
+    socket.emit('named', name);
 });
 
 
