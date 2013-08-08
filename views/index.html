@@ -31,12 +31,72 @@
 			<div id="current-song">
 				<p><span>Stupid Hoe</span></p>
 				<p>Nicki Minaj</p>
+		<div id="button">
+			<div id="triangle"></div>
+			<div id="lighter_triangle"></div>
+			<div id="darker_triangle"></div>
+		</div>
 			</div>
 		</div>
 		<div class="arrow-left "></div>
 		<div class="arrow-left-2"></div>
 		<div class="arrow-right"></div>
 		<div class="arrow-right-2"></div>
+	</div>
+
+	<!-- game start timeline -->
+	<div id="timeline" />
+		<div id="timeline-inner" /></div>
+	</div>
+
+	<div id="youtube-video"> 
+	  <div id="ytapiplayer">
+	    You need Flash player 8+ and JavaScript enabled to view this video.
+	  </div>
+	  <script type="text/javascript">
+	    var params = { allowScriptAccess: "always" };
+	    var atts = { id: "twerkoutPlayer" };
+	    swfobject.embedSWF("https://www.youtube.com/apiplayer?video_id=T6j4f8cHBIM&version=3&enablejsapi=1&playerapiid=myytflashplayer&html5=1",
+	                       "ytapiplayer", "425", "356", "8", null, null, params, atts);
+
+		function onYouTubePlayerReady(playerId) {
+			var ytplayer = document.getElementById("twerkoutPlayer");
+
+		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
+		        scope.startGame(ytplayer);
+		    });
+
+			ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+
+		}
+		function onytplayerStateChange(newState) {
+		   var ytplayer = document.getElementById("twerkoutPlayer");
+
+		   if(newState == 1) {
+		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
+		        scope.startGame(ytplayer, ytplayer.getDuration());
+		    });
+
+		   	// send timecode
+			function getCurrentTime() {
+			  var currentTime = ytplayer.getCurrentTime();
+			  return currentTime;
+			}
+			function sendCurrentTime() {
+			    angular.element(document.getElementById('app')).scope().$apply(function(scope){
+			        scope.passCurrentTime(getCurrentTime());
+			    });
+			}
+			setInterval(sendCurrentTime, 600);
+		   }
+		   if(newState == 0) {
+		    angular.element(document.getElementById('app')).scope().$apply(function(scope){
+		        scope.endGame(ytplayer);
+		    });
+		   }
+		}
+
+	  </script>
 	</div>
 
 	<ul id="scoreboard" class="cf">

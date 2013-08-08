@@ -45,6 +45,14 @@ app.controller('AppCtrl', function ($scope, socket) {
   // Methods published to the scope
   // ==============================
 
+  // GAME INIT 
+  $scope.loadGame = function() {
+
+  };
+
+  
+  // GAME/SOCKET ACTIONS
+
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
@@ -55,7 +63,11 @@ app.controller('AppCtrl', function ($scope, socket) {
   };
   $scope.init();
 
-  $scope.startGame = function(ytplayer) {
+  $scope.startVideo = function(ytplayer) {
+    ytplayer.playVideo();
+  }
+  $scope.startGame = function(ytplayer, duration) {
+    $scope.duration = duration;
     ytplayer.playVideo();
     socket.emit('song-start', $scope.sessionID);
   }
@@ -65,6 +77,7 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.passCurrentTime = function (data) {
     // current time is data.
+    $scope.currentTime = data;
   };
 
   $scope.playerData = function (data) {

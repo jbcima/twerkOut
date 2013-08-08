@@ -98,15 +98,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 1, ../sass/_intro.scss */
 #connectBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
   border: 1px solid #fff;
   border-width: 0px 2px 2px 2px;
   width: 400px;
   height: 100px;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(30%, rgba(74, 74, 74, 0.8)), color-stop(100%, #262626));
-  background-image: -webkit-linear-gradient(rgba(74, 74, 74, 0.8) 30%, #262626);
-  background-image: -moz-linear-gradient(rgba(74, 74, 74, 0.8) 30%, #262626);
-  background-image: -o-linear-gradient(rgba(74, 74, 74, 0.8) 30%, #262626);
-  background-image: linear-gradient(rgba(74, 74, 74, 0.8) 30%, #262626);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(30%, #3d3d3d), color-stop(100%, #262626));
+  background-image: -webkit-linear-gradient(#3d3d3d 30%, #262626);
+  background-image: -moz-linear-gradient(#3d3d3d 30%, #262626);
+  background-image: -o-linear-gradient(#3d3d3d 30%, #262626);
+  background-image: linear-gradient(#3d3d3d 30%, #262626);
   color: white;
   -webkit-border-radius: 0px 0px 10px 10px;
   -moz-border-radius: 0px 0px 10px 10px;
@@ -117,7 +122,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   padding: 0px 15px;
   text-align: center;
 }
-/* line 12, ../sass/_intro.scss */
+/* line 17, ../sass/_intro.scss */
 #connectBanner h1 {
   font-size: 1.25em;
   line-height: 1.2em;
@@ -126,7 +131,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-align: center;
   font-weight: 300;
 }
-/* line 19, ../sass/_intro.scss */
+/* line 24, ../sass/_intro.scss */
 #connectBanner h2 {
   font-size: 2.5em;
   line-height: 1.2em;
@@ -135,23 +140,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   text-transform: uppercase;
   font-weight: 400;
 }
-/* line 27, ../sass/_intro.scss */
+/* line 32, ../sass/_intro.scss */
 #connectBanner i {
   float: left;
   font-size: 100px;
 }
-/* line 31, ../sass/_intro.scss */
+/* line 36, ../sass/_intro.scss */
 #connectBanner u {
   text-decoration: none;
   display: inline;
 }
 
-/* line 37, ../sass/_intro.scss */
+/* line 42, ../sass/_intro.scss */
 #song-selector {
   position: relative;
   height: 400px;
+  margin-top: 150px;
 }
-/* line 40, ../sass/_intro.scss */
+/* line 46, ../sass/_intro.scss */
 #song-selector #current-song-container {
   border: 1px solid rgba(255, 255, 255, 0.2);
   -webkit-border-radius: 5px;
@@ -170,13 +176,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-size: cover;
   position: relative;
 }
-/* line 43, ../sass/_intro.scss */
+/* line 49, ../sass/_intro.scss */
 #song-selector #current-song-container #current-song {
+  width: 100%;
   position: absolute;
   padding: 10px 20px;
   z-index: 5;
 }
-/* line 47, ../sass/_intro.scss */
+/* line 54, ../sass/_intro.scss */
 #song-selector #current-song-container #current-song p {
   display: block;
   letter-spacing: 2px;
@@ -186,7 +193,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-weight: 300;
   text-shadow: rgba(0, 0, 0, 0.8) 3px 3px 7px;
 }
-/* line 54, ../sass/_intro.scss */
+/* line 61, ../sass/_intro.scss */
 #song-selector #current-song-container #current-song p span {
   letter-spacing: 0px;
   font-weight: 400;
@@ -194,7 +201,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-size: 1.875em;
   line-height: 1.6em;
 }
-/* line 69, ../sass/_intro.scss */
+/* line 76, ../sass/_intro.scss */
 #song-selector #current-song-container:before {
   -webkit-border-radius: 5px 5px 0px 0px;
   -moz-border-radius: 5px 5px 0px 0px;
@@ -214,7 +221,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(#000000, rgba(0, 0, 0, 0));
   background-image: linear-gradient(#000000, rgba(0, 0, 0, 0));
 }
-/* line 81, ../sass/_intro.scss */
+/* line 88, ../sass/_intro.scss */
 #song-selector .arrow-right {
   width: 0;
   right: 45px;
@@ -226,7 +233,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-bottom: 60px solid transparent;
   border-left: 60px solid white;
 }
-/* line 92, ../sass/_intro.scss */
+/* line 99, ../sass/_intro.scss */
 #song-selector .arrow-right-2 {
   width: 0;
   right: 50px;
@@ -239,7 +246,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-left: 60px solid #171717;
   z-index: 4;
 }
-/* line 105, ../sass/_intro.scss */
+/* line 112, ../sass/_intro.scss */
 #song-selector .arrow-left {
   top: 50%;
   margin-top: -60px;
@@ -251,7 +258,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-bottom: 60px solid transparent;
   border-right: 60px solid white;
 }
-/* line 118, ../sass/_intro.scss */
+/* line 125, ../sass/_intro.scss */
 #song-selector .arrow-left-2 {
   top: 50%;
   margin-top: -60px;
@@ -262,6 +269,125 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   border-top: 60px solid transparent;
   border-bottom: 60px solid transparent;
   border-right: 60px solid #171717;
+}
+
+/* line 142, ../sass/_intro.scss */
+#button {
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
+  cursor: pointer;
+  top: -5px;
+  position: relative;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #4a4a4a), color-stop(57%, rgba(255, 255, 255, 0.2)));
+  background-image: -webkit-linear-gradient(bottom, #4a4a4a 0%, rgba(255, 255, 255, 0.2) 57%);
+  background-image: -moz-linear-gradient(bottom, #4a4a4a 0%, rgba(255, 255, 255, 0.2) 57%);
+  background-image: -o-linear-gradient(bottom, #4a4a4a 0%, rgba(255, 255, 255, 0.2) 57%);
+  background-image: linear-gradient(bottom, #4a4a4a 0%, rgba(255, 255, 255, 0.2) 57%);
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  -ms-border-radius: 150px;
+  -o-border-radius: 150px;
+  border-radius: 150px;
+  box-shadow: inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+/* line 156, ../sass/_intro.scss */
+#button:active {
+  top: 0px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: inset 0px 2px 0px #a8a8a8;
+}
+
+/* line 162, ../sass/_intro.scss */
+#triangle {
+  width: 0px;
+  height: 0px;
+  margin-left: 50%;
+  margin-top: 50%;
+  left: -27px;
+  top: -50px;
+  position: relative;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 80px solid #22a9db;
+  z-index: 2;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+/* line 178, ../sass/_intro.scss */
+#button:hover #triangle {
+  border-left: 80px solid #45bde9;
+}
+
+/* line 179, ../sass/_intro.scss */
+#button:active #triangle {
+  border-left: 80px solid #e94545;
+}
+
+/* line 180, ../sass/_intro.scss */
+#lighter_triangle {
+  width: 0px;
+  height: 0px;
+  margin-left: 50%;
+  margin-top: 50%;
+  left: -27px;
+  top: -48px;
+  position: absolute;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 80px solid #43c0ee;
+  z-index: 1;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+/* line 196, ../sass/_intro.scss */
+#button:hover #lighter_triangle {
+  border-left: 80px solid #8bdaf7;
+}
+
+/* line 197, ../sass/_intro.scss */
+#button:active #lighter_triangle {
+  border-left: 80px solid #f78b8b;
+}
+
+/* line 198, ../sass/_intro.scss */
+#darker_triangle {
+  width: 0px;
+  height: 0px;
+  margin-left: 50%;
+  margin-top: 50%;
+  left: -28px;
+  top: -53px;
+  position: absolute;
+  border-top: 50px solid transparent;
+  border-bottom: 50px solid transparent;
+  border-left: 80px solid #0a7da7;
+  z-index: 1;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+}
+
+/* line 214, ../sass/_intro.scss */
+#button:hover #darker_triangle {
+  border-left: 80px solid #1d98c5;
+}
+
+/* line 215, ../sass/_intro.scss */
+#button:active #darker_triangle {
+  border-left: 80px solid #c51d1d;
 }
 
 /* line 1, ../sass/_player.scss */
@@ -349,6 +475,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -moz-linear-gradient(left, #ff3056, #9fe663);
   background-image: -o-linear-gradient(left, #ff3056, #9fe663);
   background-image: linear-gradient(left, #ff3056, #9fe663);
+}
+
+/* line 1, ../sass/_timeline.scss */
+#timeline {
+  height: 20px;
+  width: 100%;
+  margin-top: 30px;
+  border: 1px solid #fff;
+  border-width: 1px 0px;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #171717), color-stop(100%, #4a4a4a));
+  background-image: -webkit-linear-gradient(bottom, #171717, #4a4a4a);
+  background-image: -moz-linear-gradient(bottom, #171717, #4a4a4a);
+  background-image: -o-linear-gradient(bottom, #171717, #4a4a4a);
+  background-image: linear-gradient(bottom, #171717, #4a4a4a);
+}
+/* line 11, ../sass/_timeline.scss */
+#timeline #timeline-inner {
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #54d9eb), color-stop(100%, #b8f7ff));
+  background-image: -webkit-linear-gradient(bottom, #54d9eb, #b8f7ff);
+  background-image: -moz-linear-gradient(bottom, #54d9eb, #b8f7ff);
+  background-image: -o-linear-gradient(bottom, #54d9eb, #b8f7ff);
+  background-image: linear-gradient(bottom, #54d9eb, #b8f7ff);
+  width: 0%;
+  height: 100%;
 }
 
 /*
@@ -2646,42 +2799,57 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   content: "\f18b";
 }
 
-/* line 15, ../sass/screen.scss */
+/* line 16, ../sass/screen.scss */
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #171717;
 }
 
-/* line 20, ../sass/screen.scss */
+/* line 21, ../sass/screen.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 24, ../sass/screen.scss */
+/* line 25, ../sass/screen.scss */
 #twerkoutPlayer {
   width: 100% !important;
   height: 100% !important;
 }
 
-/* line 30, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
+#youtube-video {
+  z-index: -300;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* line 38, ../sass/screen.scss */
 #controller {
   background: black;
   color: white;
   width: 100%;
   text-align: center;
 }
-/* line 35, ../sass/screen.scss */
+/* line 43, ../sass/screen.scss */
 #controller h1 {
   font-size: 3.75em;
   line-height: 1.2em;
   font-weight: 600;
 }
-/* line 40, ../sass/screen.scss */
+/* line 48, ../sass/screen.scss */
 #controller h2 {
   font-size: 6.25em;
   line-height: 1.2em;
   font-weight: 600;
   margin: 30px;
+}
+
+/* line 69, ../sass/screen.scss */
+.hide {
+  display: none;
 }
