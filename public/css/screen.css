@@ -505,9 +505,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: linear-gradient(bottom, #54d9eb, #b8f7ff);
   width: 0%;
   height: 100%;
+  max-width: 100%;
+  min-width: 1%;
   position: relative;
 }
-/* line 16, ../sass/_timeline.scss */
+/* line 18, ../sass/_timeline.scss */
 #timeline #timeline-inner:after, #timeline #timeline-inner:before {
   left: 100%;
   border: solid transparent;
@@ -517,7 +519,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
   pointer-events: none;
 }
-/* line 26, ../sass/_timeline.scss */
+/* line 28, ../sass/_timeline.scss */
 #timeline #timeline-inner:after {
   background-color: white;
   width: 0px;
