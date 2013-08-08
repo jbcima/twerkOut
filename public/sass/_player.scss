@@ -1,5 +1,7 @@
 #scoreboard {
-	margin-top: 50px;
+	margin-bottom: 50px;
+	bottom: 0px;
+	position: absolute;
 	width: 100%;
 	text-align: center;
 	li {
@@ -14,7 +16,6 @@
 		@include background-image(linear-gradient(12deg, $dark-blue, $dark-blue 10%, rgba($mid-blue,0.2) 35%, rgba($mid-blue,0.1) 50%, rgba($dark-blue,0) 80%));
 		}
 		.score-container {
-			display: none;
 			height: 40px;
 			position: relative;
 			p {
@@ -41,6 +42,7 @@
 			}
 			.score {
 				width: 0%;
+				min-width: 1%;
 				height: 40px;
 				overflow: hidden;
 				position: relative;

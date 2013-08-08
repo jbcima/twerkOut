@@ -62,7 +62,7 @@ io.sockets.on('connection', function(socket){
 	socket.get('sessionID', function(err, sessionID){
 	    if(socket.join(sessionID)) {
 		_to[sessionID].players[socket.id].name = data;
-		socket.emit('player-update', _to[sessionID].players[socket.id]);
+		socket.broadcast.emit('player-update', _to[sessionID].players[socket.id]);
 	    }
 	});
     });

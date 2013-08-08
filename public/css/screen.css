@@ -392,11 +392,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 1, ../sass/_player.scss */
 #scoreboard {
-  margin-top: 50px;
+  margin-bottom: 50px;
+  bottom: 0px;
+  position: absolute;
   width: 100%;
   text-align: center;
 }
-/* line 5, ../sass/_player.scss */
+/* line 7, ../sass/_player.scss */
 #scoreboard li {
   text-align: left;
   display: inline-block;
@@ -404,7 +406,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 14.2%;
   margin: 10px;
 }
-/* line 7, ../sass/_player.scss */
+/* line 9, ../sass/_player.scss */
 #scoreboard li h1 {
   color: white;
   font-size: 2.25em;
@@ -418,13 +420,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: -o-linear-gradient(12deg, #54d9eb, #54d9eb 10%, rgba(136, 234, 247, 0.2) 35%, rgba(136, 234, 247, 0.1) 50%, rgba(84, 217, 235, 0) 80%);
   background-image: linear-gradient(12deg, #54d9eb, #54d9eb 10%, rgba(136, 234, 247, 0.2) 35%, rgba(136, 234, 247, 0.1) 50%, rgba(84, 217, 235, 0) 80%);
 }
-/* line 16, ../sass/_player.scss */
+/* line 18, ../sass/_player.scss */
 #scoreboard li .score-container {
-  display: none;
   height: 40px;
   position: relative;
 }
-/* line 20, ../sass/_player.scss */
+/* line 21, ../sass/_player.scss */
 #scoreboard li .score-container p {
   float: left;
   font-size: 1.875em;
@@ -437,14 +438,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
   z-index: 5;
 }
-/* line 42, ../sass/_player.scss */
+/* line 43, ../sass/_player.scss */
 #scoreboard li .score-container .score {
   width: 0%;
+  min-width: 1%;
   height: 40px;
   overflow: hidden;
   position: relative;
 }
-/* line 47, ../sass/_player.scss */
+/* line 49, ../sass/_player.scss */
 #scoreboard li .score-container .score:after, #scoreboard li .score-container .score:before {
   left: 100%;
   border: solid transparent;
@@ -454,7 +456,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
   pointer-events: none;
 }
-/* line 57, ../sass/_player.scss */
+/* line 59, ../sass/_player.scss */
 #scoreboard li .score-container .score:after {
   background-color: white;
   width: 5px;
@@ -466,7 +468,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: 0px 0px 10px;
   position: absolute;
 }
-/* line 73, ../sass/_player.scss */
+/* line 75, ../sass/_player.scss */
 #scoreboard li .score-container .score .score-inner {
   left: 0;
   position: absolute;
