@@ -109,6 +109,9 @@ io.sockets.on('connection', function(socket){
 		    );
 		    var score_add = scoring[0];
 		    var acc_add = scoring[1];
+		    if (acc_add < 0){
+			acc_add /= 2;
+		    }
 		    var mult_add = scoring[2];
 		    current_player.score += score_add;
 		    current_player.acc += acc_add;
