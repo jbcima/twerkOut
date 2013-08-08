@@ -46,8 +46,7 @@ io.sockets.on('connection', function(socket){
 			acc: 0,
 			acc_array: [0],
 			message: '',
-			name: _to[sessionID].number.toString(),
-			twerkOut: 0
+			name: _to[sessionID].number.toString()
 		    };
 		    _to[sessionID].number++;
 		}
@@ -82,7 +81,7 @@ io.sockets.on('connection', function(socket){
         });
     });
 
-    socket.on('song-start', function(data){
+    socket.on('game-start', function(data){
 	socket.get('sessionID', function(err, sessionID){
 	    if (err) {
 		console.log(err);
@@ -104,7 +103,7 @@ io.sockets.on('connection', function(socket){
 		var current_player = _to[sessionID].players[socket.id];
 		var scoring = score.get_score(
 		    data,
-		    100.,
+		    80.,
 		    current_player.multiplier,
 		    current_player.acc,
 		    current_player.acc_array[current_player.acc_array.length-1]
@@ -130,7 +129,6 @@ io.sockets.on('connection', function(socket){
 		if (current_player.acc_array.length > many){
 		    current_player.acc_array = current_player.acc_array.slice(-many);
 		}
-		current_player.twerkOut = 0;
 	    } else {
 		console.log("No sessionID");
 	    }
@@ -162,7 +160,7 @@ io.sockets.on('connection', function(socket){
     */
 
     // On song end
-    socket.on('song-end', function(data){
+    socket.on('game-end', function(data){
 	socket.get('sessionID', function(err, sessionID){
 	    if (err) {
 		console.log(err);

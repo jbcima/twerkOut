@@ -45,6 +45,65 @@ app.controller('AppCtrl', function ($scope, socket) {
   // Methods published to the scope
   // ==============================
 
+  // GAME INIT 
+  $scope.loadGame = function() {
+    // transition views
+    $scope.triggerGame = 1;
+
+    // start video
+    $scope.loadVideo();
+  };
+
+  // video 
+  $scope.percentageElapsed = 0;
+  // video parameters/attributes
+  $scope.video = {
+    params: { allowScriptAccess: "always" },
+    atts: { id: "twerkoutPlayer" } 
+  };
+  
+
+  $scope.loadVideo = function() {
+    swfobject.embedSWF("https://www.youtube.com/apiplayer?video_id=T6j4f8cHBIM&version=3&enablejsapi=1&playerapiid=myytflashplayer&html5=1",
+                     "ytapiplayer", "425", "356", "8", null, null, $scope.video.params, $scope.video.atts);
+  }
+  $scope.startVideo = function(ytplayer) {
+    ytplayer.playVideo();
+    socket.emit('video-start', 1);
+  }
+  $scope.videoStateChange = function(ytplayer, state, duration) {
+    // if video is playing
+    if(state == 1) {
+      $scope.duration = duration;
+      $scope.startGame(ytplayer, ytplayer.getDuration());
+
+      setInterval(function(){
+          $scope.$apply(function() {
+              $scope.passCurrentTime(ytplayer.getCurrentTime());
+          });
+      }, 600);
+  
+    // if video ended
+    } else if(state == 0) {
+          $scope.endGame(ytplayer);
+    }
+  }
+  $scope.passCurrentTime = function (data) {
+    $scope.currentTime = data;
+    $scope.percentageElapsed = $scope.currentTime / $scope.duration * 100;
+  };
+
+  // start the game
+  $scope.startGame = function(ytplayer, duration) {
+    socket.emit('game-start', $scope.sessionID);
+  }
+  $scope.endGame = function(ytplayer) {
+    socket.emit('game-end', $scope.sessionID);
+  }
+
+
+  // GAME/SOCKET ACTIONS
+
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
@@ -54,18 +113,6 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   };
   $scope.init();
-
-  $scope.startGame = function(ytplayer) {
-    ytplayer.playVideo();
-    socket.emit('song-start', $scope.sessionID);
-  }
-  $scope.endGame = function(ytplayer) {
-    socket.emit('song-end', $scope.sessionID);
-  }
-
-  $scope.passCurrentTime = function (data) {
-    // current time is data.
-  };
 
   $scope.playerData = function (data) {
     $scope.players = data;

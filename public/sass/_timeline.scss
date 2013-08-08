@@ -1,0 +1,37 @@
+#timeline {
+	height: 20px;
+	width: 100%;
+	margin-top: 30px;
+	border: 1px solid #fff;
+	border-width: 1px 0px;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	@include background-image(linear-gradient(bottom, $black, $gray));
+	#timeline-inner {
+		@include background-image(linear-gradient(bottom, $dark-blue, $light-blue));
+		width: 0%;
+		height: 100%;
+		position: relative;
+		&:after, &:before {
+			left: 100%;
+			border: solid transparent;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+		}
+
+		&:after {
+			background-color: white;
+			width: 0px;
+			border-radius: 2px;
+			margin-left: -3px;
+			margin-top: -4px;
+			height: 22px;
+			@include box-shadow(0px 0px 10px);
+			position: absolute;
+		}
+	}
+}

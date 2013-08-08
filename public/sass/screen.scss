@@ -6,6 +6,9 @@
 @import "_colors";
 @import "_intro";
 @import "_player";
+@import "_timeline";
+
+@import "_controller";
 
 @import "../font-awesome/scss/font-awesome";
 
@@ -25,23 +28,13 @@ body {
 	width: 100% !important;
 	height: 100% !important;
 }
-
-
-#controller {
-	background: black;
-	color: white;
-	width: 100%;
-	text-align: center;
-	h1 {
-		@include adjust-font-size-to(60px);
-		font-weight: 600;
-
-	}	
-	h2 {
-		@include adjust-font-size-to(100px);
-		font-weight: 600;
-		margin: 30px;
-	}
+#youtube-video {
+	z-index: -300;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
 }
 
 // #room {
@@ -55,3 +48,9 @@ body {
 // 	margin: 30px;
 // 	@include adjust-font-size-to(60px);
 // }
+
+
+
+.hide {
+	display: none;
+}
