@@ -5,11 +5,11 @@ var express = require('express')
 , path = require('path');
 
 app.configure('development', function(){
-  var liveReloadPort = 35729;
-  app.use(require('connect-livereload')({
-    port: liveReloadPort
-  }));
-  app.use(express.errorHandler());
+    var liveReloadPort = 35729;
+    app.use(require('connect-livereload')({
+	port: liveReloadPort
+    }));
+    app.use(express.errorHandler());
 });
 
 app.configure(function(){
