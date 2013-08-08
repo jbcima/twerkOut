@@ -14,6 +14,7 @@
 		@include background-image(linear-gradient(12deg, $dark-blue, $dark-blue 10%, rgba($mid-blue,0.2) 35%, rgba($mid-blue,0.1) 50%, rgba($dark-blue,0) 80%));
 		}
 		.score-container {
+			display: none;
 			height: 40px;
 			position: relative;
 			p {

@@ -420,10 +420,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 /* line 16, ../sass/_player.scss */
 #scoreboard li .score-container {
+  display: none;
   height: 40px;
   position: relative;
 }
-/* line 19, ../sass/_player.scss */
+/* line 20, ../sass/_player.scss */
 #scoreboard li .score-container p {
   float: left;
   font-size: 1.875em;
@@ -436,14 +437,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
   z-index: 5;
 }
-/* line 41, ../sass/_player.scss */
+/* line 42, ../sass/_player.scss */
 #scoreboard li .score-container .score {
   width: 0%;
   height: 40px;
   overflow: hidden;
   position: relative;
 }
-/* line 46, ../sass/_player.scss */
+/* line 47, ../sass/_player.scss */
 #scoreboard li .score-container .score:after, #scoreboard li .score-container .score:before {
   left: 100%;
   border: solid transparent;
@@ -453,7 +454,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   position: absolute;
   pointer-events: none;
 }
-/* line 56, ../sass/_player.scss */
+/* line 57, ../sass/_player.scss */
 #scoreboard li .score-container .score:after {
   background-color: white;
   width: 5px;
@@ -465,7 +466,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   box-shadow: 0px 0px 10px;
   position: absolute;
 }
-/* line 72, ../sass/_player.scss */
+/* line 73, ../sass/_player.scss */
 #scoreboard li .score-container .score .score-inner {
   left: 0;
   position: absolute;
@@ -502,6 +503,55 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   background-image: linear-gradient(bottom, #54d9eb, #b8f7ff);
   width: 0%;
   height: 100%;
+  position: relative;
+}
+/* line 16, ../sass/_timeline.scss */
+#timeline #timeline-inner:after, #timeline #timeline-inner:before {
+  left: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+/* line 26, ../sass/_timeline.scss */
+#timeline #timeline-inner:after {
+  background-color: white;
+  width: 0px;
+  border-radius: 2px;
+  margin-left: -3px;
+  margin-top: -4px;
+  height: 22px;
+  -webkit-box-shadow: 0px 0px 10px;
+  -moz-box-shadow: 0px 0px 10px;
+  box-shadow: 0px 0px 10px;
+  position: absolute;
+}
+
+/* line 1, ../sass/_controller.scss */
+#controller {
+  background: #a3a3a3;
+  color: white;
+  width: 100%;
+  text-align: center;
+  margin: 25px;
+}
+/* line 7, ../sass/_controller.scss */
+#controller h1 {
+  font-size: 3.75em;
+  line-height: 1.2em;
+  font-weight: 600;
+  color: #4A4A4A;
+  font-family: 'Fighting Spirit TBS';
+}
+/* line 14, ../sass/_controller.scss */
+#controller h2 {
+  color: #4A4A4A;
+  font-size: 1.875em;
+  line-height: 1.6em;
+  font-weight: 600;
+  margin: 30px;
 }
 
 /*
@@ -2799,26 +2849,26 @@ a .icon-rotate-90:before, a .icon-rotate-180:before, a .icon-rotate-270:before, 
   content: "\f18b";
 }
 
-/* line 16, ../sass/screen.scss */
+/* line 18, ../sass/screen.scss */
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #171717;
 }
 
-/* line 21, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 25, ../sass/screen.scss */
+/* line 27, ../sass/screen.scss */
 #twerkoutPlayer {
   width: 100% !important;
   height: 100% !important;
 }
 
-/* line 29, ../sass/screen.scss */
+/* line 31, ../sass/screen.scss */
 #youtube-video {
   z-index: -300;
   position: absolute;
@@ -2828,28 +2878,7 @@ body {
   bottom: 0;
 }
 
-/* line 38, ../sass/screen.scss */
-#controller {
-  background: black;
-  color: white;
-  width: 100%;
-  text-align: center;
-}
-/* line 43, ../sass/screen.scss */
-#controller h1 {
-  font-size: 3.75em;
-  line-height: 1.2em;
-  font-weight: 600;
-}
-/* line 48, ../sass/screen.scss */
-#controller h2 {
-  font-size: 6.25em;
-  line-height: 1.2em;
-  font-weight: 600;
-  margin: 30px;
-}
-
-/* line 69, ../sass/screen.scss */
+/* line 54, ../sass/screen.scss */
 .hide {
   display: none;
 }

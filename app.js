@@ -46,8 +46,7 @@ io.sockets.on('connection', function(socket){
 			acc: 0,
 			acc_array: [0],
 			message: '',
-			name: _to[sessionID].number.toString(),
-			twerkOut: 0
+			name: _to[sessionID].number.toString()
 		    };
 		    _to[sessionID].number++;
 		}
@@ -63,7 +62,7 @@ io.sockets.on('connection', function(socket){
 	socket.get('sessionID', function(err, sessionID){
 	    if(socket.join(sessionID)) {
 		_to[sessionID].players[socket.id].name = data;
-		socket.broadcast.emit('player-update', _to[sessionID].players[socket.id]);
+		socket.emit('player-update', _to[sessionID].players[socket.id]);
 	    }
 	});
     });
@@ -82,7 +81,7 @@ io.sockets.on('connection', function(socket){
         });
     });
 
-    socket.on('song-start', function(data){
+    socket.on('game-start', function(data){
 	socket.get('sessionID', function(err, sessionID){
 	    if (err) {
 		console.log(err);
@@ -104,7 +103,7 @@ io.sockets.on('connection', function(socket){
 		var current_player = _to[sessionID].players[socket.id];
 		var scoring = score.get_score(
 		    data,
-		    100.,
+		    80.,
 		    current_player.multiplier,
 		    current_player.acc,
 		    current_player.acc_array[current_player.acc_array.length-1]
@@ -119,17 +118,12 @@ io.sockets.on('connection', function(socket){
 		current_player.acc_array.push(acc_add);
 		current_player.multiplier += mult_add;
 		var many = 4;
-		if (current_player.acc == 100.){
-		    current_player.twerkOut = 1;
-		    current_player.score += 1000;
-		    current_player.acc = 0;
-		}
 		current_player.message = message.get_message(current_player.acc_array.slice(-many),many);
+		console.log('msg: '+current_player.message);
 		socket.broadcast.emit('player-update', current_player);
 		if (current_player.acc_array.length > many){
 		    current_player.acc_array = current_player.acc_array.slice(-many);
 		}
-		current_player.twerkOut = 0;
 	    } else {
 		console.log("No sessionID");
 	    }
@@ -161,7 +155,7 @@ io.sockets.on('connection', function(socket){
     */
 
     // On song end
-    socket.on('song-end', function(data){
+    socket.on('game-end', function(data){
 	socket.get('sessionID', function(err, sessionID){
 	    if (err) {
 		console.log(err);

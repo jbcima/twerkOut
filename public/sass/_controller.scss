@@ -1,0 +1,20 @@
+#controller {
+	background: #a3a3a3;
+	color: white;
+	width: 100%;
+	text-align: center;
+	margin: 25px;
+	h1 {
+		@include adjust-font-size-to(60px);
+		font-weight: 600;
+		color: #4A4A4A;
+		font-family: 'Fighting Spirit TBS';
+
+	}	
+	h2 {
+		color: #4A4A4A;
+		@include adjust-font-size-to(30px);
+		font-weight: 600;
+		margin: 30px;
+	}
+}
