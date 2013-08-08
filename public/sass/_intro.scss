@@ -1,0 +1,130 @@
+#connectBanner {
+	border: 1px solid #fff;
+	border-width: 0px 2px 2px 2px;
+	width: 400px;
+	height: 100px;
+	@include background-image(linear-gradient(rgba($gray, 0.8) 30%, lighten(black, 15%)));
+	color: white;
+	@include border-radius(0px 0px 10px 10px);
+	margin: 0px auto;
+	padding: 0px 15px;
+	text-align: center;
+	h1 {
+		@include adjust-font-size-to(20px);
+		padding: 15px 15px 0px 15px;
+		display: block;
+		text-align: center;
+		font-weight: 300;
+	}
+	h2 {
+		@include adjust-font-size-to(40px);
+		line-height: 1em;
+		padding-top: 5px;
+		text-transform: uppercase;
+		font-weight: 400;
+
+	}
+	i {
+		float: left;
+		font-size: 100px;
+	}
+	u {
+		text-decoration: none;
+		display: inline;
+	}
+}
+
+#song-selector {
+	position: relative;
+	height: 400px;
+	#current-song-container {
+	border: 1px solid rgba(255,255,255,0.2);
+		@include border-radius(5px);
+		#current-song {
+			position: absolute;
+			padding: 10px 20px;
+			z-index: 5;
+			p {
+				display: block;
+				letter-spacing: 2px;
+				color: white;
+				@include adjust-font-size-to(20px);
+				font-weight: 300;
+				@include text-shadow(hsla(0,0,0,0.8) 3px 3px 7px);
+				span {
+				letter-spacing: 0px;
+					font-weight: 400;
+					font-style: normal;
+					@include adjust-font-size-to(30px);
+				}
+			}
+		}
+		width: 70%;
+		background-color: white;
+		height: 400px;
+		margin: 50px auto 0px;
+		background-image: url('/img/stupid_hoe.jpg');
+		@include background-size(cover);
+		position: relative;
+	 	&:before {
+			@include border-radius(5px 5px 0px 0px);
+	 		content: ' ';
+	 		display: block;
+	 		width: 100%;
+	 		z-index: 1;
+	 		height: 400px;
+	 		position: absolute;
+	 		top: 0;
+	 		@include background-image(linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0)));
+	 	}
+	}
+	.arrow-right {
+		width: 0; 
+		right: 45px;
+		top: 50%;
+		margin-top: -60px;
+		height: 0; 
+		position: absolute;
+		border-top: 60px solid transparent;
+		border-bottom: 60px solid transparent;
+		border-left: 60px solid white;
+	}
+	.arrow-right-2 {
+		width: 0; 
+		right: 50px;
+		top: 50%;
+		margin-top: -60px;
+		height: 0; 
+		position: absolute;
+		border-top: 60px solid transparent;
+		border-bottom: 60px solid transparent;
+		border-left: 60px solid $black;
+		z-index: 4;
+	}
+
+	.arrow-left {
+		top: 50%;
+		margin-top: -60px;
+		left: 45px;
+		position: absolute;
+		width: 0; 
+		height: 0; 
+		border-top: 60px solid transparent;
+		border-bottom: 60px solid transparent;
+		
+		border-right: 60px solid white;
+	}
+
+	.arrow-left-2 {
+		top: 50%;
+		margin-top: -60px;
+		left: 50px;
+		position: absolute;
+		width: 0; 
+		height: 0; 
+		border-top: 60px solid transparent;
+		border-bottom: 60px solid transparent;
+		border-right: 60px solid $black;
+	}
+
+}

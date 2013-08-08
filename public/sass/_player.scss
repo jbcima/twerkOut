@@ -1,0 +1,89 @@
+#scoreboard {
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+	li {
+		text-align: left;
+		h1 {
+			color: white;
+			@include adjust-font-size-to(36px);
+			font-weight: 300;
+			@include text-shadow(hsla(0,0,0,0.8) 1px 1px 3px);
+			width: 100%;
+			padding: 7px 15px;
+		@include background-image(linear-gradient(12deg, $dark-blue, $dark-blue 10%, rgba($mid-blue,0.2) 35%, rgba($mid-blue,0.1) 50%, rgba($dark-blue,0) 80%));
+		}
+		.score-container {
+			height: 40px;
+			position: relative;
+			p {
+				float: left;
+				@include adjust-font-size-to(30px);
+				line-height: 1em;
+				color: white;
+				padding: 5px 15px 5px;
+				font-weight: 400;
+				text-shadow: 0 1px 0 $gray,
+				0 0px 0 #c9c9c9,
+				0 0px 0 #bbb,
+				0 1px 0 #b9b9b9,
+				0 2px 0 #aaa,
+				0 3px 1px rgba(0,0,0,.4),
+				0 0 5px rgba(0,0,0,.3),
+				0 0px 2px rgba(0,0,0,.35),
+				0 2px 3px rgba(0,0,0,.2),
+				0 3px 3px rgba(0,0,0,.3),
+				0 5px 5px rgba(0,0,0,.25),
+				0 7px 7px rgba(0,0,0,.2);
+				position: absolute;
+				z-index: 5;
+			}
+			.score {
+				width: 100px;
+				height: 40px;
+				overflow: hidden;
+				position: relative;
+				&:after, &:before {
+					left: 100%;
+					border: solid transparent;
+					content: " ";
+					height: 0;
+					width: 0;
+					position: absolute;
+					pointer-events: none;
+				}
+
+				&:after {
+					background-color: white;
+					width: 5px;
+					border-radius: 2px;
+					margin-left: -3px;
+					height: 34px;
+					@include box-shadow(0px 0px 10px);
+					position: absolute;
+				}
+				// &:before {
+				// 	border-color: rgba(194, 225, 245, 0);
+				// 	border-left-color: #e3e3e3;
+				// 	border-width: 12px;
+				// 	margin-top: 20px;
+				// 	margin-left: -1px;
+				// }
+				.score-inner {
+					left: 0;
+					position: absolute;
+					height: 100%;
+					@include background-image(linear-gradient(left, rgba(#FF3056, 1), rgba(#9FE663, 1)));
+				}
+			}			
+		}
+
+		display: inline-block;
+		max-width: 250px;
+		width: 14.2%;
+		//-webkit-transform: skewY(-2deg);
+		//box-shadow: 2px 2px 50px;
+		margin: 10px;
+	 	
+	}
+}
