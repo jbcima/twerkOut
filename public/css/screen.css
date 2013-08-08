@@ -506,7 +506,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   width: 0%;
   height: 100%;
   max-width: 100%;
-  min-width: 1%;
+  min-width: 0%;
   position: relative;
 }
 /* line 18, ../sass/_timeline.scss */
