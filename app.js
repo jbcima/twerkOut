@@ -104,10 +104,8 @@ io.sockets.on('connection', function(socket){
 		    var current_player = _to[sessionID].players[socket.id];
 		    var scoring = score.get_score(
 			data,
-			80.,
-			current_player.multiplier,
-			current_player.acc,
-			current_player.acc_array[current_player.acc_array.length-1]
+			100.,
+			current_player.multiplier
 		    );
 		    var score_add = scoring[0];
 		    var acc_add = scoring[1];
@@ -116,6 +114,7 @@ io.sockets.on('connection', function(socket){
 		    current_player.acc += acc_add;
 		    //make sure accuracy isn't less than 0
 		    current_player.acc = Math.max(0,current_player.acc);
+		    console.log(current_player.acc_array);
 		    current_player.acc_array.push(acc_add);
 		    current_player.multiplier += mult_add;
 		    var many = 4;
@@ -127,9 +126,10 @@ io.sockets.on('connection', function(socket){
 			current_player.message = 'twerkOUT!';
 		    }
 		    socket.broadcast.emit('player-update', current_player);
-		}
-		if (current_player.acc_array.length > many){
-		    current_player.acc_array = current_player.acc_array.slice(-many);
+		    console.log('player: '+current_player);
+		    if (current_player.acc_array.length > many){
+			current_player.acc_array = current_player.acc_array.slice(-many);
+		    }
 		}
 	    } else {
 		console.log("No sessionID");
