@@ -23,6 +23,7 @@ function joinSession() {
 var name = '';
 function getName() {
     name = prompt("enter your name:");
+    $('#name').text(name);
 }
 
 joinSession();
@@ -35,14 +36,13 @@ socket.on('joined', function(data) {
 
 
 socket.on('end',function(data){
-    console.log(data);
 });
 
-socket.on('player-update' ,function(data){
+/*socket.on('player-update' ,function(data){
     if (socketID == socket.id) {
 	//$('#name').text(data.name.toString());
     }
-});
+});*/
 
 
 // on shake 

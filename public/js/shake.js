@@ -35,7 +35,7 @@
         } else if (typeof document.createEvent === "function") {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
-        } else { 
+        } else {
           return false;
         }
     }
@@ -89,8 +89,10 @@
 
             if (timeDifference > (1500./6.5)) {
                 this.event.timeDifference = timeDifference;
+		this.event.lastDifference = this.lastTime;
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
+		this.lastDifference = timeDifference;
             }
         }
 
