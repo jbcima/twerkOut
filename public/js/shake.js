@@ -20,6 +20,7 @@
 
         //use date to prevent multiple shakes firing
         this.lastTime = new Date();
+	this.lastDifference = null;
 
         //accelerometer values
         this.lastX = null;
@@ -88,8 +89,11 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > (1500./6.5)) {
-                this.event.timeDifference = timeDifference;
-		this.event.lastDifference = this.lastTime;
+		if (this.lastDifference == null) {
+		    lastDifference = timeDifference;
+		}
+		this.event.data = [lastDifference,timeDifference]
+		console.log(this.event.data);
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
 		this.lastDifference = timeDifference;

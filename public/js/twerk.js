@@ -4,11 +4,9 @@ var socket = io.connect('/')
 , iphone = navigator.userAgent.toLowerCase().indexOf("iphone");
 
 
-var sessionID= '';
-
-var socketID = null;
-
 $(document).ready(function(){
+    var sessionID= '';
+    var socketID = null;
 
     function joinSession() {
 	sessionID = prompt("enter room number:");
@@ -60,5 +58,4 @@ $(document).ready(function(){
 	// 	z: event.accelerationIncludingGravity.z
 	// });
     }, false);
-
 });
