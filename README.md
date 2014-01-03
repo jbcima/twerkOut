@@ -14,6 +14,6 @@ Instructions
 
 team members:
 
-- [ricky medina](www.github.com/r-medina)
-- [Jeremy Cimafonte](www.github.com/jbcima)
-- [Dan Kang](www.github.com/dskang)
+- Ricky Medina
+- Jeremy Cimafonte
+- Dan Kang
