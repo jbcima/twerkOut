@@ -22,7 +22,8 @@ function joinSession() {
 
 var name = '';
 function getName() {
-    name = prompt("enter your name:");
+  name = prompt("enter your name:");
+  $('#name').text(name);
 }
 
 joinSession();

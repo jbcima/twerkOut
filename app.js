@@ -124,7 +124,7 @@ io.sockets.on('connection', function(socket){
 		    current_player.message = message.get_message(current_player.acc_array.slice(-many),many);
 		    if (current_player.acc >= 90.){
 			current_player.twerkOut = 1;
-			current_player.score += 1000*current_player.multiplier;
+			current_player.score += Math.round(1000*current_player.multiplier);
 			current_player.acc = 0;
 			current_player.message = 'twerkOUT!';
 		    }
