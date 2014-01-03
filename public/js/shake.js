@@ -20,7 +20,6 @@
 
         //use date to prevent multiple shakes firing
         this.lastTime = new Date();
-	this.lastDifference = null;
 
         //accelerometer values
         this.lastX = null;
@@ -36,7 +35,7 @@
         } else if (typeof document.createEvent === "function") {
             this.event = document.createEvent('Event');
             this.event.initEvent('shake', true, true);
-        } else {
+        } else { 
           return false;
         }
     }
@@ -89,14 +88,9 @@
             timeDifference = currentTime.getTime() - this.lastTime.getTime();
 
             if (timeDifference > (1500./6.5)) {
-		if (this.lastDifference == null) {
-		    lastDifference = timeDifference;
-		}
-		this.event.data = [lastDifference,timeDifference]
-		console.log(this.event.data);
+                this.event.timeDifference = timeDifference;
                 window.dispatchEvent(this.event);
                 this.lastTime = new Date();
-		this.lastDifference = timeDifference;
             }
         }
 

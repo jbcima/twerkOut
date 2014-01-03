@@ -101,16 +101,17 @@ io.sockets.on('connection', function(socket){
 		console.log(err);
 	    } else if (sessionID) {
 		if(_to[sessionID].start){
-		    console.log(data);
 		    var current_player = _to[sessionID].players[socket.id];
 		    var scoring = score.get_score(
-			data[0],
-			data[1],
+			data,
 			100.,
 			current_player.multiplier
 		    );
 		    var score_add = scoring[0];
 		    var acc_add = scoring[1];
+		    if (acc_add < 0){
+			acc_add /= 4;
+		    }
 		    var mult_add = scoring[2];
 		    current_player.score += score_add;
 		    current_player.acc += acc_add;
