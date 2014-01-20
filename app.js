@@ -69,6 +69,9 @@ io.sockets.on('connection', function(socket) {
     socket.get('sessionID', function(err, sessionID) {
       if(socket.join(sessionID)) {
         twerkOut[sessionID].players[socket.id].name = name;
+        // emits to sender
+        socket.emit('player-update', twerkOut[sessionID].players[socket.id]);
+        // emits to everyone else (particularly browser)
         socket.broadcast.emit('player-update', twerkOut[sessionID].players[socket.id]);
       }
     });
@@ -135,11 +138,14 @@ io.sockets.on('connection', function(socket) {
 
           // if the accuracy bar of the player reaches 100, they get a points bonus
           if (current_player.acc >= 100.) {
+            // bonus state
+            current_player.twerkOut = 1;
             current_player.score += Math.round(1000*current_player.multiplier);
             current_player.acc = 0;
             current_player.message = 'twerkOUT!';
           }
 
+          socket.emit('player-update', current_player);
           socket.broadcast.emit('player-update', current_player);
 
           if (current_player.acc_array.length > many_accs) {

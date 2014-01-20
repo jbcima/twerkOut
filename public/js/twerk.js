@@ -28,10 +28,6 @@ socket.on('end', function(data) {
 });
 
 socket.on('player-update', function(data) {
-  console.log(data);
-  if (socketID == socket.id) {
-    // $('#points').replace(name);
-  }
 });
 
 window.addEventListener('shake', function(event) {

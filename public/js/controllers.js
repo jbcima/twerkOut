@@ -116,7 +116,6 @@ app.controller('AppCtrl', function ($scope, socket) {
   $scope.init = function () {
     // set session ID 
     $scope.sessionID = Math.round(Math.random()*1171).toString();
-    //console.log($scope.sessionID);
     $('#room').text($scope.sessionID);
     socket.emit('join', $scope.sessionID, 1);
 
@@ -125,13 +124,10 @@ app.controller('AppCtrl', function ($scope, socket) {
 
   $scope.playerData = function (data) {
     $scope.players = data;
-    //console.log(data);
   };
 
   $scope.playerUpdate = function (data) {
     $scope.players[data.id].score = data.score;
-    console.log(data.score);
-    console.log($scope.players);
     $scope.players[data.id].acc = data.acc;
     $scope.players[data.id].name = data.name;
       interface.setScoreBars();
