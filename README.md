@@ -1,7 +1,4 @@
-twerkOut
-========
-
-NOTE: the website is currently down.
+#twerkOut
 
 Instructions
 

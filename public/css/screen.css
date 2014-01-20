@@ -93,7 +93,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
  */
 /* line 24, ../sass/_clearfix.scss */
 .cf {
-  *zoom: 1;
+  /* *zoom: 1; */
 }
 
 /* line 1, ../sass/_intro.scss */
@@ -631,7 +631,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
-  *margin-right: .3em;
+  /* margin-right: .3em; */
 }
 
 /* line 10, ../font-awesome/scss/_core.scss */
@@ -916,12 +916,12 @@ a [class*=" icon-"] {
   height: 100%;
   font-size: 1em;
   line-height: inherit;
-  *line-height: 2em;
+  /* line-height: 2em; */
 }
 /* line 43, ../font-awesome/scss/_mixins.scss */
 .icon-stack .icon-stack-base {
   font-size: 2em;
-  *line-height: 1em;
+  /* *line-height: 1em; */
 }
 
 /* Animated rotating icon */

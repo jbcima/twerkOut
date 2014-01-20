@@ -70,14 +70,17 @@ app.controller('AppCtrl', function ($scope, socket) {
   
 
   $scope.loadVideo = function() {
-    swfobject.embedSWF("https://www.youtube.com/apiplayer?video_id=T6j4f8cHBIM&version=3&enablejsapi=1&playerapiid=myytflashplayer&html5=1",
-                     "ytapiplayer", "425", "356", "8", null, null, $scope.video.params, $scope.video.atts);
-  }
+    swfobject.embedSWF(
+      "https://www.youtube.com/apiplayer?video_id=T6j4f8cHBIM&version=3&enablejsapi=1&playerapiid=myytflashplayer&html5=1",
+      "ytapiplayer","425", "356", "8", null, null, $scope.video.params, $scope.video.atts
+    );
+  };
+
   $scope.startVideo = function(ytplayer) {
     ytplayer.playVideo();
     socket.emit('video-start', 1);
   }
-  $scope.videoStateChange = function(ytplayer, state, duration) {
+  $scope.videoStateChange = function(ytplayer,state,duration) {
     // if video is playing
     if(state == 1) {
       $scope.duration = duration;
@@ -138,9 +141,6 @@ app.controller('AppCtrl', function ($scope, socket) {
     $scope.finalScore = 1;
     $scope.finalPlayers = data;
   };
-
-
-
 });
 
 // app.controller('HudCtrl', function ($scope) {});

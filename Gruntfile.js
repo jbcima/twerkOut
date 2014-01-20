@@ -18,7 +18,7 @@ module.exports = function (grunt) {
         options: {
           middleware: function (connect) {
             return [
-              require('connect-livereload')(), // <--- here
+              require('connect-livereload')(),
               checkForDownload,
               mountFolder(connect, '.tmp'),
               mountFolder(connect, 'app')
@@ -38,9 +38,21 @@ module.exports = function (grunt) {
           nospawn: true
         }
       },
-      compass: {
+      sass: {
         files: ['public/sass/*.{scss,sass}'],
         tasks: ['compass'],
+        options: {
+          livereload: reloadPort
+        }
+      },
+      js : {
+        files: ['public/js/*.js','public/js/app/*.js'],
+        options: {
+          livereload: reloadPort
+        }
+      },
+      html: {
+        files: ['views/index.html','views/include/*.html'],
         options: {
           livereload: reloadPort
         }

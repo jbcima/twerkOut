@@ -1,95 +1,97 @@
 <html>
-<head>
-<title>twerkOut</title>
-<link rel="stylesheet" type="text/css" href="/css/screen.css">
-<script src="/js/jquery.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/swfobject.js"></script>
-<script src="/js/angular.min.js"></script>
-
-
-<!-- gauges -->
-
-
-<!-- angulayrs -->
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/controllers.js"></script>
-<script type="text/javascript" src="/js/services.js"></script>
-<script type="text/javascript" src="/js/directives.js"></script>
-
-
-</head>
-<body ng-app="app" ng-controller="AppCtrl" id="app">
-	<div id="connectBanner"/>
-		<i class="icon-mobile-phone icon-4x"></i>
-		<h1>go to <u>www.twerkout.co</u></h1>
-		<h2>room #: <span id="room"></span>
-	</div>
-
-	<div id="song-selector" ng-hide="triggerGame">
-		<div id="current-song-container">
-			<div id="current-song">
-				<p><span>Stupid Hoe</span></p>
-				<p>Nicki Minaj</p>
-		<div id="button" ng-click="loadGame()">
-			<div id="triangle"></div>
-			<div id="lighter_triangle"></div>
-			<div id="darker_triangle"></div>
-		</div>
-			</div>
-		</div>
-		<div class="arrow-left"></div>
-		<div class="arrow-left-2"></div>
-		<div class="arrow-right"></div>
-		<div class="arrow-right-2"></div>
-	</div>
-
-	<!-- game start timeline -->
-	<div id="timeline"  ng-show="triggerGame" />
-		<div id="timeline-inner" ng-style="{ width: percentageElapsed + '%' }" /></div>
-	</div>
-
-	<div id="youtube-video"> 
-	  <div id="ytapiplayer">
-	  </div>
-	  <script type="text/javascript">
-
-		function onYouTubePlayerReady(playerId) {
-			var ytplayer = document.getElementById("twerkoutPlayer");
-			ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
-			angular.element(document.getElementById('app')).scope().$apply(function(scope){
-			        scope.startVideo(ytplayer);
-			});
-
-		}
-
-		function onytplayerStateChange(state) {
-			var ytplayer = document.getElementById("twerkoutPlayer");
-			var duration = ytplayer.getDuration();
-			angular.element(document.getElementById('app')).scope().$apply(function(scope){
-			        scope.videoStateChange(ytplayer, state, duration);
-			});
-		}
-
-	  </script>
-	</div>
-	
-	<div id="final-score"  ng-show="finalScore">
-		<h1 ng-repeat="player in finalPlayers">{{ player.name }} - {{ player.score }}</h1>
-	</div>
-
-	<ul id="scoreboard" class="cf">
-		<li ng-repeat="player in players">
-			<h1 class="name">{{ player.name }}</h1>
-			<div class="score-container" ng-show="triggerGame">
-				<p>{{ player.score }}</p>
-				<div class="score" ng-style="{ width: player.acc + '%' }">
-					<div class="score-inner"></div>
-				</div>
-			</div>
-		</li>
-	</ul>
-
-<script type="text/javascript" src="/js/interface.js"></script>
-</body>
+  <head>
+    <title>twerkOut</title>
+    <link rel="stylesheet" type="text/css" href="/css/screen.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/swfobject.js"></script>
+    <script src="/js/angular.min.js"></script>
+    
+    
+    <!-- gauges -->
+    
+    
+    <!-- angulayrs -->
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/controllers.js"></script>
+    <script type="text/javascript" src="/js/services.js"></script>
+    <script type="text/javascript" src="/js/directives.js"></script>
+    
+    
+  </head>
+  
+  <body ng-app="app" ng-controller="AppCtrl" id="app">
+	<div id="connectBanner">
+	  <i class="icon-mobile-phone icon-4x"></i>
+	  <h1>go to <u>www.twerkout.co</u></h1>
+	  <h2>room #: <span id="room"></span></h2>
+    </div>
+    
+    <div id="song-selector" ng-hide="triggerGame">
+      <div id="current-song-container">
+	    <div id="current-song">
+	      <p><span>Stupid Hoe</span></p>
+	      <p>Nicki Minaj</p>
+	      <div id="button" ng-click="loadGame()">
+		    <div id="triangle"></div>
+		    <div id="lighter_triangle"></div>
+		    <div id="darker_triangle"></div>
+	      </div>
+	    </div>
+      </div>
+      <!-- <div class="arrow-left"></div> -->
+      <!-- <div class="arrow-left-2"></div> -->
+      <!-- <div class="arrow-right"></div> -->
+      <!-- <div class="arrow-right-2"></div> -->
+    </div>
+    
+    <!-- game start timeline -->
+    <div id="timeline"  ng-show="triggerGame" >
+      <div id="timeline-inner" ng-style="{ width: percentageElapsed + '%' }" ></div>
+    </div>
+    
+    <div id="youtube-video"> 
+      <div id="ytapiplayer">
+      </div>
+      <script type="text/javascript">
+    
+    function onYouTubePlayerReady(playerId) {
+        var ytplayer = document.getElementById("twerkoutPlayer");
+        ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
+        angular.element(document.getElementById('app')).scope().$apply(
+            function(scope){
+                scope.startVideo(ytplayer);
+                });
+        
+        }
+  
+  function onytplayerStateChange(state) {
+      var ytplayer = document.getElementById("twerkoutPlayer");
+      var duration = ytplayer.getDuration();
+      angular.element(document.getElementById('app')).scope().$apply(function(scope){
+          scope.videoStateChange(ytplayer, state, duration);
+          });
+      }
+  
+      </script>
+    </div>
+    
+    <div id="final-score"  ng-show="finalScore">
+      <h1 ng-repeat="player in finalPlayers">{{ player.name }} - {{ player.score }}</h1>
+    </div>
+    
+    <ul id="scoreboard" class="cf">
+      <li ng-repeat="player in players">
+	    <h1 class="name">{{ player.name }}</h1>
+	    <div class="score-container" ng-show="triggerGame">
+	      <p>{{ player.score }}</p>
+	      <div class="score" ng-style="{ width: player.acc + '%' }">
+		    <div class="score-inner"></div>
+	      </div>
+	    </div>
+      </li>
+    </ul>
+    
+    <script type="text/javascript" src="/js/interface.js"></script>
+  </body>
 </html>
